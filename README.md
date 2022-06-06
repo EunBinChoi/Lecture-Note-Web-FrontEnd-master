@@ -1,1 +1,1 @@
-# LectureNote_JavaScript
+# LectureNote_Web_FrontEnd
