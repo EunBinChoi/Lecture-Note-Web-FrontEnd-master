@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            String: 
+                slice(start, end): 음수 인덱스 허용
+                substring(start, end)
+                substr(start, length)
+                replace(타겟 문자열, 바꿀 문자열)
+                toUpperCase(), toLowerCase()
+                concat(), +
+                trim()
+                padStart(), padEnd()
+                charAt(index)
+                indexOf(string)
+
+            Number:
+                NaN (Not a Number): 숫자 / 문자열
+                infinity: 숫자 / 0
+            Date:
+            Math:
+        */
+       // String
+       const str1 = "";
+       const str2 = '';
+       // 문자열의 길이가 길 ~~~ 경우 backtick(`) 이용
+       const str3 = `asdasdasdasd
+       adasdasdasd
+       asdadsasdasd
+       asdasd`;
+       console.log(str3);
+
+       // Number
+       const num1 = 123; // 기초 타입
+       const num2 = new Number(123); // primitive value: 123
+       console.log(num1 == num2); // true (데이터: primitive value)
+       console.log(num1 === num2); // false (데이터 (primitive value) + 데이터 타입)
+       console.log(num1);
+       console.log(num2);
+       console.log(typeof(num1)); // number
+       console.log(typeof(num2)); // object
+
+       const num3 = new Number(567); // 참조 타입 (객체)
+       const num4 = new Number(567);
+       console.log(num3 == num4); // false (데이터: 주소값의 비교)
+       console.log(num3 === num4); // false (데이터 (주소값의 비교) + 데이터 타입)
+       console.log(num3);
+       console.log(num4);
+       console.log(typeof(num3));
+       console.log(typeof(num4));
+
+       // Date
+       const now = new Date();
+       console.log(now);
+       console.log(now.getFullYear());
+       console.log(now.getMonth()); // 0 ~ 11 => 1 ~ 12
+       console.log(now.getDate());
+       console.log(now.getDay()); // 0 ~ 6, 0: 일요일 ~ 6: 토요일
+       console.log(now.getHours());
+       console.log(now.getMinutes());
+       console.log(now.getSeconds());
+       console.log(now.getMilliseconds());
+
+
+       // Math
+       console.log(Math.PI);
+       // pow, sqrt, abs, round, ceil, floor
+       console.log(Math.max(1, 2, 3, 4, 5));
+       console.log(Math.min(1, 2, 3, 4, 5));
+       console.log(Math.random()); // 0 <=   < 1
+
+       // 0 ~ 99 사이의 정수
+       console.log(Math.floor(Math.random() * 100));
+
+       // 1 ~ 100 사이의 정수
+       console.log(Math.floor(Math.random() * 100) + 1);
+    </script>
+</body>
+</html>

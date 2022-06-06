@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="css/style12.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        z-index
+        : z방향 (앞뒤) 방향으로 순서를 결정하는 값
+        : 정수값 1, 2, 3 ... (값이 클수록 앞으로 출력)
+        : 가장 앞으로 나와야 하는 요소에 대해서는 999로 지정
+    -->
+
+    <div class="box1">
+        <div class="color-box" id="box1">black box</div>
+        <div class="color-box" id="box2">red box</div>
+        <div class="color-box" id="box3">orange box</div>
+        <div class="color-box" id="box4">yellow box</div>
+    </div>
+    
+
+    <!-- 박스 세로로 세우기 -->
+    <div class="box2">
+        <div class="column-box" id="box5">black box</div>
+        <div class="column-box" id="box6">red box</div>
+        <div class="column-box" id="box7">orange box</div>
+        <div class="column-box" id="box8">yellow box</div>
+    </div>
+
+    <!-- position: relative로 바꾸면?
+        relative: 요소들이 중첩 구조를 가질 때
+        해당 요소의 원래 위치에서 어느정도 뒤로 가게 할 것인지를 지정
+    -->
+    <div class="box3">
+        <div class="relative-box" id="box9">black box</div>
+        <div class="relative-box" id="box10">red box</div>
+        <div class="relative-box" id="box11">orange box</div>
+        <div class="relative-box" id="box12">yellow box</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // https://medium.com/@bluesh55/javascript-prototype-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-f8e67c286b67
+        // JS는 객체지향언어! (클래스 기반 X, 프로토타입 기반)
+        // 프로토타입 기반은 메모리 효율적으로 관리하기 위함
+        // 프로토타입은 자바에서 static으로 선언된 공유 메모리랑 같은 개념
+        // 객체의 필드가 변경될 때만 메모리를 새롭게 할당
+
+        // Class를 만들 때는 함수를 이용할 수 있음
+        function byClassPerson() {
+            // field
+            this.eyes = 2;
+            this.nose = 1;
+        }
+        const kimByClass = new byClassPerson(); // 객체 생성
+        const parkByClass = new byClassPerson(); // 객체 생성
+        console.log(kimByClass);
+        console.log(parkByClass);
+
+        // Prototype
+        function byProtoPerson() {}
+        byProtoPerson.prototype.eyes = 2;
+        byProtoPerson.prototype.nose = 1;
+        const kimByProto = new byProtoPerson(); // 객체 생성
+        const parkByProto = new byProtoPerson(); // 객체 생성
+        console.log(kimByProto);
+        console.log(parkByProto);
+
+        kimByProto.nose = 2;
+        console.log(kimByProto);
+        console.log(parkByProto);
+
+    </script>
+</body>
+</html>

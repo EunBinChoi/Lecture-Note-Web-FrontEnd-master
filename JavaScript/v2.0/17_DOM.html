@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>first paragraph</p>
+    <p>second paragraph</p>
+
+    <h1 class="title">Welcome! 1</h1>
+    <h2 class="title">Welcome! 2</h2>
+    <div id="box">
+        <p id="p1">첫번째 문단</p>
+        <p id="p2">두번째 문단</p>
+    </div>
+
+    <div class="title">Write Title</div>
+    <button onclick="createElementandTextNode('h3', 'New Title!');">
+        <p style="font-size: 20px;">Click me!</p>
+    </button>
+
+    <script>
+        /*
+            DOM (Document Object Model, 웹문서 객체 모델)
+            : 웹 문서를 로드할 때 브라우저는 구성 요소를 DOM으로 생성 (트리 구조)
+            : 웹 문서의 내용을 다 담고 있는 객체 ((window.)document)
+            : html > head > meta, title
+                   > body > h1, p, script
+
+            document 객체의 속성
+            - getElementById(), getElementsByClassName(), getElementsByTagName(), querySelector(), querySelectorAll()
+            - create..., on....., 
+
+            활용도
+            - JS로 DOM 요소의 내용/스타일 변경, 요소 추가/삭제
+            ex) 사용자의 이벤트가 있을 때만 실행할 코드, 서버에서 가지고 온 데이터를 보여주기 위한 용도
+        */
+
+        // document 속성 확인 (for ~ in (index, key return))
+        // document.onload = () => {};
+        // document["onload"] = () => {};
+        // for(const doc in document) {
+        //     console.log("==============================");
+        //     console.log(doc); // KEY
+        //     console.log(typeof(doc)); // string
+        //     console.log(document[doc]); // VALUE, 대괄호 표기법 O
+        //     console.log(document.doc); // undefined, 마침표 표기법 X
+        //     console.log("==============================");
+        //     console.log("\n");
+        // }
+
+        ////////////////////////////////////////////////////////////////////////////////
+
+        function printElementById(id) {
+            try {
+                const element = document.getElementById(id);
+                if(element == null || element == undefined) {
+                    throw new Error("[ERROR] null or undefined.");
+                }
+                console.dir(element);
+                console.log(typeof (element));
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+
+        function printElementsByTagName(tagName) {
+            try {
+                const elements = document.getElementsByTagName(tagName);
+                if(elements.length == 0) {
+                    throw new Error("[ERROR] no elements.");
+                }
+                console.log(elements);
+                console.log(typeof (elements));
+                for (const element of elements) { console.log(element); }
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+
+        function printElementsByClassName(className) {
+            try {
+                const elements = document.getElementsByClassName(className);
+                if(elements.length == 0) {
+                    throw new Error("[ERROR] no elements.");
+                }
+                console.log(elements);
+
+                for (const element of elements) { console.log(element); }
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+
+        /*
+            console.log(): 매개변수로 전달된 값 출력 (html과 같은 트리 구조)
+            console.dir(): 매개변수로 전달된 객체의 속성 출력 (json과 같은 트리 구조)
+        */
+
+       ;
+        console.log( document.getElementsByTagName("p2") );
+        console.log( document.getElementById("box2") );
+        console.log( document.getElementsByClassName("box2") );
+        console.log( document.querySelector(".box2") );
+        console.log( document.querySelectorAll(".box2") );
+
+        // Q1. p tag의 첫번째 요소의 inner text 반환
+        const innerText = document.getElementsByTagName("p")[0].innerText;
+        console.log(innerText);
+
+        // Q2. id box인 요소의 inner html 반환
+        const innerHTML = document.getElementById("box").innerHTML;
+        console.log(innerHTML);
+
+        // Q3. printElementByQuerySelector(selector)
+        // ex) selector: id(#id) / class(.class) / tag(tag)
+        function printElementByQuerySelector(selector) {
+            try {
+                const element = document.querySelector(selector);
+                // selector를 가지고 검색할 수 있는 요소 중에 가장 첫번째 요소 반환
+                if(element == null || element == undefined) {
+                    throw new Error("[ERROR] null or undefined.");
+                }
+                console.log(element);
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+        printElementByQuerySelector(".title");
+        // printElementsByClassName("title");
+        console.log("\n");
+
+        // Q4. printElementsByQuerySelectorAll(selector)
+        function printElementsByQuerySelectorAll(selector) {
+            try {
+                const elements = document.querySelectorAll(selector);
+                // selector를 가지고 검색할 수 있는 요소 모두 반환
+                if(elements.length == 0) {
+                    throw new Error("[ERROR] no elements.");
+                }
+                console.log(elements);
+
+                for (const element of elements) { console.log(element); }
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+        printElementsByQuerySelectorAll(".title");
+        console.log("\n");
+
+        // Q5. changeInnerHTMLByQuerySelector(selector, msg)
+        // .......innerHTML = msg;
+        function changeInnerHTMLByQuerySelector(selector, msg) {
+            try {
+                const element = document.querySelector(selector);
+                if(element == null || element == undefined) {
+                    throw new Error("[ERROR] null or undefined.");
+                }
+                element.innerHTML = msg;
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+        // changeInnerHTMLByQuerySelector("div.title2", "Change Title!");
+
+        // Q7. createElementandTextNode(selector, msg)
+        function createElementandTextNode(selector, msg) {
+            try {
+                const element = document.createElement(selector);
+                const text = document.createTextNode(msg);
+
+                element.appendChild(text);
+                document.body.appendChild(element);
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+            // appendElementandTextNode("body", selector, msg);
+        }
+        createElementandTextNode("h3", "New Title!");
+
+        // Q8. appendElementandTextNode(parentSelector, childSelector, msg)
+        // parentSelector: 기존에 있는 요소 접근
+        // childSelector: 새로운 요소 만듦 
+        function appendElementandTextNode(parentSelector, childSelector, msg) {
+            try {
+                const parent = document.querySelector(parentSelector);
+                if(parent == null || parent == undefined) {
+                    throw new Error("[ERROR] null or undefined.");
+                }
+                const child = document.createElement(childSelector);
+                const text = document.createTextNode(msg);
+
+                child.appendChild(text);
+                parent.appendChild(child);
+                // document.body.appendChild(parent); 
+                // 기존에 있는 parent에 접근하기 때문에 parent랑 body랑 연결할 필요가 없음
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+        appendElementandTextNode("#box", "p", "세번째 문단");
+
+        // Q9. appendList(parentSelector, listSelector, itemSelector, items)
+        // parentSelector: 기존에 있는 요소 접근
+        // listSelector: 새로운 요소 만듦 (ul, ol)
+        // itemSelector: list 안의 아이템 만듦 (li)
+        // items: Array
+        function appendList(parentSelector, listSelector, itemSelector, items) {
+            try {
+                const parent = document.querySelector(parentSelector);
+                if(parent == null || parent == undefined) {
+                    throw new Error("[ERROR] null or undefined.");
+                }
+                const list = document.createElement(listSelector); // ul
+
+                for (let i = 0; i < items.length; i++) {
+                    const item = document.createElement(itemSelector); // li
+                    const text = document.createTextNode(items[i]);
+                    item.appendChild(text);
+                    list.appendChild(item);
+                }
+                parent.appendChild(list);
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+        appendList(".title", "ul", "li", ['🍔', '🍕', '🌭']);
+        /*
+            <h1 class=".title">Welcome! 1
+                <ul>
+                    <li>🍔</li>
+                    <li>🍕</li>
+                    <li>🌭</li>
+                </ul>
+            </h1>
+        */
+
+        // Q10. removeElement(parentSelector, childSelector)
+        // removeChild()
+        function removeElement(parentSelector, childSelector) {
+            try {
+                // const parent = document.querySelector(parentSelector);
+                // if(parent == null || parent == undefined) {
+                //     throw new Error("[ERROR] null or undefined.");
+                // }
+                const child = document.querySelector(childSelector);
+                if(child == null || child == undefined) {
+                    throw new Error("[ERROR] null or undefined.");
+                }
+                child.parentNode.removeChild(child);
+            }
+            catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+        removeElement('.title', 'ul');
+
+        // Q11. replaceElement(oldSelector, newSelector, replaceMsg)
+        // replaceChild(newElement, oldElement), parentNode
+        function replaceElement(oldSelector, newSelector, replaceMsg) {
+            try {
+                const oldElement = document.querySelector(oldSelector);
+                if(oldElement == null || oldElement == undefined) {
+                    throw new Error("[ERROR] null or undefined.");
+                }
+                const newElement = document.createElement(newSelector);
+                const parentElement = oldElement.parentNode;
+                const text = document.createTextNode(replaceMsg);
+
+                newElement.appendChild(text);
+                // newElement.innerHTML = replaceMsg;
+
+                parentElement.replaceChild(newElement, oldElement);
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+        replaceElement("#p1", "div", "첫번째 수정된 문단");
+
+        // Q12. changeStyleProperty(selector, property, replaceStyle)
+        function changeStyleProperty(selector, property, replaceStyle) {
+            try {
+                const element = document.querySelector(selector);
+                if(element == null || element == undefined) {
+                    throw new Error("[ERROR] null or undefined.");
+                }
+                
+                // <h2 style="font-size: 35px"></h2>
+                element.style[property] = replaceStyle;
+                // element.setAttribute(property, replaceStyle);
+            } catch (e) {
+                console.error(e);
+                // console.error('[ERROR] can not find the element by query selector');
+                // console.warn
+            }
+        }
+        changeStyleProperty("#box", "color", "gray");
+        changeStyleProperty("#box", "fontSize", "30px");
+        changeStyleProperty("#box", "background", "beige");
+
+
+    </script>
+</body>
+
+</html>

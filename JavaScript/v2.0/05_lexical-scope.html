@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* lexical scope 
+            : JS의 변수의 유효범위 (scope)가 다른 언어와 약간 다름
+            : var는 바로 중첩 블럭 (nested block)의 스코프도 사용 가능!
+            : let, const는 동일한 스코프 내에서만 사용 가능!
+
+            (*) var, let, const : hoisting
+            var: hoisting 
+            (+ 제약 조건 X)
+            
+            let, const: hoisting 
+            (+ scope, 변수 정의된 위치 (변수 정의보다 사용을 먼저 하는 것을 막기 위해))
+        */
+
+        function a() {
+            if(true) {
+                var text1 = "hello1!";
+                console.log('in if: ', text1);
+                // console.log('in if: ', text2); // Q2.
+            }
+            var text2 = "hello2";
+            console.log('in func: ', text1); 
+            // "hello1!" 정상적으로 출력
+            // if문의 scope까지 사용 가능
+            // global > func (text1 사용) > func if (text1 정의)
+            console.log('in func: ', text2);
+        }
+
+        function aHoisting() {
+            var text1;
+            var text2;
+            
+            if(true) {    
+                text1 = "hello1!";
+                console.log('in if: ', text1);
+                console.log('in if: ', text2); // undefined
+            }
+            text2 = "hello2";
+            console.log('in func: ', text1); // hello1
+            console.log('in func: ', text2); // hello2
+        }
+        a();
+
+        // Q1.
+        // console.log(text1); // error
+        // console.log(text2); // error
+        // 현재 global scope에는 text1, text2가 없기 때문에 오류
+
+
+        // Q3.
+        var res = a; // a 함수의 주소값을 res에게 대입
+        // console.log(res.text1); // undefined
+        // console.log(res.text2); // undefined
+
+        // Q4. function a()의 호이스팅한 후 실행 순서
+        function aHoisting() {
+            var text1;
+            var text2;
+            
+            if(true) {    
+                text1 = "hello1!";
+                console.log('in if: ', text1);
+                console.log('in if: ', text2); // undefined
+            }
+            text2 = "hello2";
+            console.log('in func: ', text1); 
+            console.log('in func: ', text2);
+        }
+        aHoisting();
+
+        // Q5.
+        function b() {
+            var text3 = "hello";
+            var text4 = 3 + 5;
+            return text4;
+        }
+        var res = b(); // b 함수의 반환값을 가지고 있음 (text 4 값)
+        console.log(res);
+
+        var res = b;
+        var resres = res(); // b 함수의 반환값을 가지고 있음 (text 4 값)
+        console.log(resres);
+
+        // var res = b;
+        // console.log(res.text3); // undefined
+        // console.log(res.text4); // undefined
+
+        // Q6.
+        for(var i = 0; i < 5; i++){
+            console.log(i);
+        }
+        console.log(i);
+        // for의 외부에서 var i 호출 가능 (scope 상관하지 않음!)
+
+        for(let j = 0; j < 5; j++){
+            console.log(j);
+        }
+        console.log(j); 
+        // for의 외부에서는 let j 호출 불가능 (같은 scope 내에서만 호출 가능!)
+        // error
+        
+
+
+
+    </script>
+</body>
+</html>

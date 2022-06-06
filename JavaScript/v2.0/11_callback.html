@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            콜백 함수 (callback function)
+            : 함수의 파라미터로 함수의 객체를 전달
+            : 함수의 특성에 따라 나중에 호출 (비동기적), 바로 호출 (동기적)
+            
+            // why?
+            // 1. 사용자 이벤트 처리
+            // 2. 네트워크 응답 처리
+            // 3. 파일 입출력
+            // 4. 의도적으로 시간 조절 (알람, 타이머) (setTimeout(), setInterval())
+        */
+
+        // 비동기적인 실행 X (순차적으로 실행, 동기적 실행)
+        function func(callback) {
+            callback();
+        }
+        console.log('before');
+        func(() => {console.log("run here!!!")});
+        console.log('after');
+
+        // 비동기적인 실행 (setTimeout())
+        function func_async() {
+            console.log("run here!!!");
+        }
+        console.log('before');
+        setTimeout(func_async, 3000); // 3000ms = 3s
+        console.log('after');
+
+        // Arrow Func
+        console.log('before');
+        setTimeout(() => {console.log('run here!!!')}, 3000); // 3000ms = 3s
+        console.log('after');
+
+        // 비동기적인 실행 (setInterval())
+        let n = 0;
+        let inter = setInterval(() => {
+            if(n >= 9) {
+                clearInterval(inter);
+            }
+            console.log(++n);
+        }, 2000);
+        clearInterval(inter);
+
+        //////////////////////////////////////////////////
+        // 콜백 지옥 (callback hell)
+        // : 함수 매개변수로 넘겨지는 콜백 함수가 반복되는 현상
+        // : 코드 들여쓰기 수준이 깊어짐 (가독성 ↓)
+
+        function add(x, callback) {
+            let sum = x + x;
+            console.log(sum);
+            callback(sum);
+        }
+
+        add(2, function(res) {
+            add(res, function(res) {
+                add(res, function(res) {
+                    console.log('done!');
+                });
+            });
+        });
+
+        // 1) Promise (약속)
+        // : 콜백 함수를 잘 ~ 정리해놓으면 나중에 불러줄게!
+        // : 새로운 스레드에 할당 (Main Thread가 아닌)
+        // - 상태: pending (중지) -> fullfilled (만족) or rejected (거절)
+
+
+        // Promise 정상 수행 -> resolve()
+        // Promise 실패 -> reject()
+
+        // 1-1) Promise Producer
+        const promise = new Promise((resolve, reject) => {
+            // resolve('success!');
+            reject('fail');
+        });
+
+        // 1-2) Promise Consumer
+        promise.then((value) => console.log(value)) // resolve()
+                .catch((error) => console.log(error)) // reject()
+                .finally(() => console.log('finally!')); // 실행 유무와 상관없이 무조건 실행
+
+        // callback hell
+        add(2, function(res) {
+            add(res, function(res) {
+                add(res, function(res) {
+                    console.log('done!');
+                });
+            });
+        });
+
+        // callback hell handling using promise
+        function addPromise(x) {
+            return new Promise((resolve, reject) => {
+                let sum = x + x;
+                console.log(sum);
+                resolve(sum);
+            });
+        }
+
+        addPromise(2).then(res => {
+            return addPromise(res);
+        }).then(res => {
+            return addPromise(res);
+        }).then(res => {
+            console.log('finish!');
+        });
+
+        // Promise를 간단하게 쓰는 방법 (새로운 thread에 할당!)
+        function delay(ms) {
+            return new Promise((resolve) => {setTimeout(resolve, ms)});
+        }
+        
+        async function addPromiseAsync(x) {
+            // await delay(3000); // async function에서만 사용 가능
+            let sum = x + x;
+            console.log(sum);
+            return sum;
+        }
+
+        addPromiseAsync(2).then(res => {
+            return addPromiseAsync(res);
+        }).then(res => {
+            return addPromiseAsync(res);
+        }).then(res => {
+            console.log('finish!');
+        });
+
+    </script>
+</body>
+</html>

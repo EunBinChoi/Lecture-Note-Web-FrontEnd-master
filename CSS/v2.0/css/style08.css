@@ -1,0 +1,149 @@
+@charset "utf-8";
+
+body {
+    margin: 0px;
+}
+
+.container {
+    background-color: beige;
+    height: 100vh; 
+    /* 보이는 영역 (viewport)의 height를 100으로 채우겠다! */
+
+    /*  
+        height: 100px
+        절대적으로 100px만 주겠다!
+    */
+
+    /*  
+        height: 100%
+        body를 100%으로 채우겠다! 
+        현재 body의 크기는 전체 요소의 크기에 비례해서 커짐
+    */
+
+    display: flex;
+    /* container style */
+    /* container한테 flexbox라고 알려줌! */
+
+    /* flex-direction: row-reverse; */
+    /* 컨테이너 박스 정렬 방향 */
+    /* 
+        row: 왼쪽 -> 오른쪽 정렬 (기본값)
+        1234....8910
+
+        row-reverse: 오른쪽 -> 왼쪽 정렬
+        (item 정렬 순서가 바뀜)
+                1098....4321
+
+        column: 위 -> 아래 정렬
+        1
+        2
+        3
+        4
+        ...
+        8
+        9
+        10
+
+        column-reverse: 아래 -> 위 정렬
+        (item 정렬 순서가 바뀜)
+
+        10
+        9
+        8
+        ...
+        3
+        2
+        1
+    */
+
+    /* flex-wrap: wrap-reverse; */
+    /* 브라우저 사이즈가 작아지거나 커지게 될 경우에 item들을 어떻게 나열할건지 */
+    /* 
+        flex-wrap
+        nowrap: 브라우저 사이즈가 작아져도 한 줄에 나옴 (기본값)
+        wrap: 브라우저 사이즈가 작아지면 item들이 viewport에 보일 수 있도록
+              앞에서부터 여러줄에 나옴 (item들이 첫 행)
+        wrap-reverse: 브라우저 사이즈가 작아지면 item들이 viewport에 보일 수 있도록
+              뒤에서부터 여러줄에 나옴 (item들이 마지막 행)
+    */
+
+    /* flex-direction, flex-wrap */
+    /* flex-flow: row wrap; */
+
+    /* item style */
+    /* justify-content: flex-end; */
+    /* 
+        justify-content
+        flex-start: 중심축이 수평축이면 왼쪽에서 오른쪽, 중심축이 수직축이면 위에서 아래로 (기본값)
+        (아이템 정렬 순서가 바뀌지 않음, 왼쪽으로 붙음)
+        
+        flex-end: 중심축이 수평축이면 오른쪽에서 왼쪽, 중심축이 수직축이면 아래에서 위
+        (아이템 정렬 순서가 바뀌지 않음, 오른쪽으로 붙음)
+        
+        center: 아이템을 센터로 넣음
+
+        space-around: 1 ~ 10 중 1, 10에는 공백 부족
+                ex) 1, 10: 10px, else: 20px
+
+        space-evenly: 1 ~ 10 사이의 공백을 동일하게 만듦
+        
+        space-between: 1 ~ 10 중 1, 10에는 공백 X   
+    */
+
+    align-items: center;
+    /* 
+        align-items: cross axis (**) 기준으로 정렬
+        
+        baseline: viewport에서 아이템이 위에서부터 시작하면 top 정렬
+                                    아래서부터 시작하면 bottom 정렬
+        center: viewpoert에서 cross axis의 중앙 정렬
+    */
+
+}
+
+.item {
+    width: 50px;
+    height: 50px;
+    border: 1px solid  black;
+}
+
+
+.item1 {    
+    background-color: #ef9a9a;
+}
+
+.item2 {
+    background-color: #f48fb1;
+}
+
+.item3 {
+    background-color: #ce93d8;
+}
+
+.item4 {
+    background-color: #b39ddb;
+}
+
+.item5 {
+    background-color: #90caf9;
+}
+
+.item6 {
+    background-color: #a5d5a7;
+}
+
+.item7 {
+    background-color: #e6ee9c;
+}
+
+.item8 {
+    background-color: #fff59d;
+}
+
+.item9 {
+    background-color: #ffcc80;
+}
+
+.item10 {
+    background-color: #ffab91;
+}

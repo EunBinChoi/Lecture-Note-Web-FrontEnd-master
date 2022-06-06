@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+body {
+    background-color: rgb(165, 225, 248);
+    margin: 0px;
+}
+
+#wrap {
+    width: 1000px;
+    height: 900px;
+    color: white;
+    /* font color */
+    font-size: 40px;
+    text-align: center;
+    /* text-align 수평적 중앙 */
+    margin: 0px auto;
+    /* wrap 중앙으로 맞추기 위해
+       0px: 위아래
+       auto: 왼쪽 오른쪽
+    */
+    /* margin: 0px auto 0px auto; */
+    /* 위 오른쪽 아래 왼쪽 */
+}
+
+header {
+    width: 1000px;
+    height: 100px;
+    line-height: 100px;
+    background-color: rgb(6, 128, 241);
+}
+
+nav {
+    width: 1000px;
+    height: 100px;
+    line-height: 100px;
+    background-color: rgb(38, 144, 243);
+}
+
+#side-left {
+    float: left;
+    width: 300px;
+    height: 600px;
+    line-height: 600px;
+    background-color: rgb(30, 164, 241);
+}
+
+#contents {
+    float: left;
+    width: 400px;
+    height: 600px;
+    line-height: 600px;
+    background-color: rgb(73, 184, 248);
+}
+
+#side-right {
+    float: left;
+    width: 300px;
+    height: 600px;
+    line-height: 600px;
+    background-color: rgba(52, 181, 255, 0.589);
+}
+
+footer {
+    /* float: left; */
+    clear: left;
+    /* 이전 블록들의 floating 속성을 없애줌 */
+    width: 1000px;
+    height: 100px;
+    line-height: 100px;
+    background-color: rgb(38, 144, 243);
+}

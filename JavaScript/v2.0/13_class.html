@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JavaScript: 객체 기반의 스크립트 언어
+        // 자바의 클래스 (메모리 올라가지 않음) 
+        // vs 자바스크립트의 프로토타입 (메모리 올라감)
+        // 객체: 프로토타입과 달라질 때만 메모리 올라감
+        
+        // 객체 생성 방법 (클래스가 나오기 이전)
+        const obj = {name:"smith", age:40, company:"naver"};
+        console.log(obj);
+        console.log(obj["name"]); // 대괄호 표기법
+        console.log(obj.name); // 마침표 표기법
+
+        const car = {
+            model: "grandeur",
+            price: 2500,
+
+            // 객체의 속성값이 또 다른 객체
+            company: {
+                name: "hyundai",
+                logo: "H"
+            },
+
+            // 객체의 속성값이 배열
+            tires: ["fl", "fr", "bl", "br"],
+
+            // 함수 정의
+            drive: function() {
+                console.log('Drive!');
+            }
+        };
+        // Q1. print car's company name
+        console.log(car.company); // object
+        console.log(car.company.name);
+        console.log(car["company"].name);
+        console.log(car["company"]["name"]);
+
+        // Q2. print car's tires
+        console.log(car.tires); // array
+        console.log(car.tires.length); // 4
+
+        // for of: element
+        for(const tire of car.tires) {
+            console.log(tire);
+        }
+        // for, for in: index
+        for(let i = 0; i < car.tires.length; i++) {
+            console.log(car.tires[i]);
+        }
+        for(const i in car.tires) {
+            console.log(car.tires[i]);
+        }
+        // foreach (array): element
+        car.tires.forEach(tire => console.log(tire));
+
+        // Q3. call drive()
+        car.drive();
+
+        // 객체 안의 속성 일부 삭제하는 방법
+        // 속성 자체가 삭제가 되는 게 아니라 참조 링크 삭제
+
+        // 1)
+        delete car.price; 
+        console.log(car.price); // car.price = undefined
+
+        // 2)
+        car.price = null;
+
+        // 3)
+        car.price = undefined;
+
+        // 객체 속성 순회 (for ~ in (index, key return))
+        for(const c in car) {
+            console.log(c); // KEY
+            console.log(typeof(c)); // string
+            console.log(car[c]); // VALUE, 대괄호 표기법 지원 O
+            // console.log(car.c); // 마침표 표기법 지원 X
+        }
+
+        // 불가 😂
+        // for(const c of car) {
+        //     console.log(c);
+        // }
+
+        // 불가 😂
+        // console.log(car.length); // undefined
+        // for(let i = 0; i < car.length; i++) {
+        //     console.log(car[i]);
+        // }
+        
+        // 클래스를 대신하는 함수를 만듦 (prototype, class)
+        // class 기반: 각 객체마다 name, age, company 공간이 새로 할당
+        // prototytpe 기반: prototype에 디폴트 값을 지정해놓고 
+        //                  prototype의 값과 달라질 때만 공간이 새로 할당
+        // person.prototype.name = "", 
+        // person.prototype.age = 0, 
+        // person.prototype.company = "hyundai"
+        function byClassPerson(name, age, company="hyundai") {
+            this.name = name;
+            this.age = age;
+            this.company = company;
+        }
+        const p1 = new byClassPerson("smith", 30);
+        const p2 = new byClassPerson("sally", 50, "samsung");
+        console.log(p1);
+        console.log(p2);
+
+        function byProtoPerson() {}
+        byProtoPerson.prototype.name = "";
+        byProtoPerson.prototype.age = 0;
+        byProtoPerson.prototype.company = "hyundai";
+        const p3 = new byProtoPerson();
+        p3.name = "smith";
+        p3.age = 30;
+        const p4 = new byProtoPerson();
+        p4.name = "sally";
+        p4.age = 50;
+        p4.company = "samsung";
+        console.log(p3);
+        console.log(p4);
+
+        /////////////////////////////////////////////////////////
+        // Q1. HarryPotterBook 클래스 (title, price 모두 동일)
+        // 1- title, price, stock (2, 3, 2), series (1, 2, 3)
+        function HarryPotterBook(stock=0, series=1) {
+            this.stock = stock;
+            this.series = series;
+        }
+        HarryPotterBook.prototype.title = "HarryPotter";
+        HarryPotterBook.prototype.price = 23000;
+        // HarryPotterBook.prototype.stock = 0;
+        // HarryPotterBook.prototype.series = 1;
+        // stock, series는 달라질 수 있기 때문에 prototype에 저장할 필요가 없음
+        // 오히려 prototype의 메모리 공간만 차지함
+
+        const harryPotter1 = new HarryPotterBook(2, 1);
+        const harryPotter2 = new HarryPotterBook(3, 2);
+        const harryPotter3 = new HarryPotterBook(2, 3);
+        const harryPotter4 = new HarryPotterBook();
+        console.log(harryPotter1);
+        console.log(harryPotter2);
+        console.log(harryPotter3);
+        console.log(harryPotter4);
+
+        // Q2. Triangle 클래스
+        // 1 - base, height (base, height은 0보다 작을 수 없음, 작을 경우 alert)
+        // 2 - return base, height (배열 리턴, 객체 리턴)
+        function Triangle(base, height) {
+            if(base <= 0) {
+                alert("[ERROR] 밑변의 길이는 양수이어야 함");
+                return;
+            }
+            if(height <= 0) {
+                alert("[ERROR] 높이는 양수이어야 함");
+                return;
+            }
+
+            this.base = base;
+            this.height = height;
+
+            // 배열 리턴
+            return [this.base, this.height];
+            
+            // 객체 리턴
+            // return {
+            //     base: this.base,
+            //     height: this.height
+            // }
+        }
+
+        // 객체 리턴
+        // const triangle1 = new Triangle(0, 0);
+        // console.log(triangle1.base); // undefined
+        // console.log(triangle1.height); // undefined
+        // const triangle2 = new Triangle(3, 5);
+        // console.log(triangle2.base); // 3
+        // console.log(triangle2.height); // 5
+
+        // 배열 리턴
+        // const triangle1 = new Triangle(0, 0);
+        // console.log(triangle1[0]); // undefined
+        // console.log(triangle1[1]); // undefined
+        // const triangle2 = new Triangle(3, 5);
+        // console.log(triangle2[0]); // 3
+        // console.log(triangle2[1]); // 5
+
+        /////////////////////////////////////////////////////////////////
+        // 클래스 (class)
+        // - ES6 도입
+        // - 프로토타입의 언어지만 가독성, 표현 간단하게 하기 위해서 문법 추가
+        // - function의 개념과 클래스의 개념을 구분하기 위해서
+        //   (syntatic sugar)
+
+        class HarryPotterBookbyClass {
+            // public: fieldName; 
+            // private: #fieldName;
+            
+            static #title = 'HarryPotter';
+            static #price = 23000;
+
+            #stock;
+            #series;
+            
+            constructor(stock, series) {
+                this.#stock = stock;
+                this.#series = series;
+            }
+
+            // Q1. 0보다 작은 stock이 들어오는 경우에는 0 초기화
+            // Q2. 0보다 작은 series가 들어오는 경우에는 0 초기화
+            // => 삼항 연산자
+            get stock() {return this.#stock;}
+            set stock(stock) {this.#stock = stock >= 0 ? stock : 0;}
+
+            get series() {return this.#series;}
+            set series(series) {this.#series = series >= 0 ? series : 0;}
+
+            // Q3. static title, price getter
+            // static get title() {return HarryPotterBookbyClass.#title;}
+            // static get price() {return HarryPotterBookbyClass.#price;}
+
+
+            // Q4. printStatic() call
+            // Q6. 만약에 get title, get price가 정의되어있지 않을 경우
+            static printStatic() {
+                console.log(HarryPotterBookbyClass.#title); // static private
+                console.log(HarryPotterBookbyClass.#price); // static private
+            }
+
+            // Q5. print() call
+            print() {
+                console.log(this.#stock); // private
+                console.log(this.#series); // private
+            }
+        }
+        const harryPotterbyClass = new HarryPotterBookbyClass(2, 1);
+        console.log(harryPotterbyClass);
+   
+        // static 변수의 getter() 호출시에는 클래스이름(**).필드이름
+        // 만약 private 변수의 getter()가 없을 시에는 undefined
+        // 만약 private 변수의 getter()가 있을 시에는 필드를 접근하면 getter() 호출
+        console.log(HarryPotterBookbyClass.title); 
+        console.log(HarryPotterBookbyClass.price);
+
+        // Q4.
+        HarryPotterBookbyClass.printStatic();
+        // Q5.
+        harryPotterbyClass.print();
+
+        /////////////////////////////////////////////////////////////////
+        // Q7. public field (publicField = "public!") 외부에서 접근 가능한지
+        // Q8. private field (privateField = "private!") 외부에서 접근 가능한지 
+        // Q9. public field (const constField = "const!") 외부에서 수정 가능한지
+        // => class 내에서 const 정의 불가능
+        //   1) class 외부에 const를 만들어서 사용
+        //   2) freeze()
+        //   3) 리터럴 (literal) 상수를 선언해서 사용
+
+        // const constField  = "const!"; // 1)
+        class Test {
+            publicField = "public!";
+            #privateField = "private!";
+            
+            static get constField() {
+                return "const!"; // 3)
+
+                // const constField = Object.freeze("const!"); // 2)
+                // return constField;
+            }
+        }
+        const t = new Test();
+        console.log(t.publicField); // "public!"
+        console.log(t.privateField); // undefined
+        
+        t.publicField = "public revised!";
+        console.log(t.publicField); // "public revised!"
+        console.log(t);
+        
+        // privateField라는 public 필드가 생성
+        // 기존의 private인 privateField는 수정되지 않음
+        t.privateField = "private revised!"; // public privateField 선언
+        console.log(t.privateField); // "private revised" (public)
+        console.log(t); // #privateField, publicField, privateField
+
+        Test.constField = "const revised!";
+        console.log(Test.constField); // "const!" (get constField 함수 호출)
+
+        const tt = new Test();
+        console.log(tt); // #privateField, publicField
+
+        //////////////////////////////////////////////////////
+        // Q10. static vs prototype
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        // static method
+        Person.getInfo = function(obj) {
+            return {
+                name: obj.name,
+                age: obj.age
+            };
+        }
+
+        // prototype method
+        Person.prototype.getName = function() {
+            return this.name;
+        }
+        Person.prototype.getAge = function() {
+            return this.age;
+        }
+
+        const sally = new Person('sally', 30);
+        console.log(sally.getName());
+        console.log(sally.getAge());
+        console.log(sally); // getName() (O), getAge() (O), getInfo() (X)
+        
+        // console.log(sally.getInfo(sally)); // error (static method)
+        console.log(Person.getInfo(sally).name);
+        console.log(Person.getInfo(sally).age);
+        
+        // static method: class 이름으로 호출 (객체가 없어도 호출 가능)
+        // => 객체에 연결되어있는 메소드 X
+        // prototype method: instance 이름으로 호출
+        // => 객체에 연결되어있는 메소드 O
+    
+    </script>
+</body>
+</html>

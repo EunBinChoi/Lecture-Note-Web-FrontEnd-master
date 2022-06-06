@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    
+    <style>
+        header {
+            color:coral;
+            font-size: 10px;
+        }
+        #wrap {
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- css (cascade style sheet) 
+        : html 문서에 스타일 (서식)을 지정할 수 있는 기능
+
+        css 적용 방법
+        (1번이 가장 높은 우선순위를 가짐)
+        1) inline style <h1 style="..."></h1>
+        2) internal-style: 동일 html 문서 안에 style 지정
+            <style>
+                h1 {.....}
+            </styl>
+        3) external-style: 외부 css 문서 안에 style 지정
+        <link rel="stylesheet" href="css/style.css">
+
+        선택자 (selector)
+        1) 전체 선택자 (초기값)
+            * {}
+        2) 태그 선택자
+            태그명 (div, header, span, p ...) {}
+        3) id 선택자 (* 같은 페이지 내에서 동일한 id 부여 금지)
+            #아이디이름 {}
+        4) class 선택자 (* 여러 개의 요소를 하나의 클래스로 묶을 수 있음)
+            .클래스이름 {}
+        5) 자식 선택자 (* A 바로 아래 B에만 적용 (A에는 적용 X))
+            A > B  {}
+        6) 자손 선택자 (* A 아래 모든 B에 적용)
+            A B {}
+        7) 인접 형제 선택자 (* A 아래에 있는 첫번째 동생에 적용)
+            A + B {}
+        8) 일반 형제 선택자 (* A 아래에 있는 모든 동생에 적용) 
+            A ~ B {}
+        9) 속성 선택자 (* 하나의 요소에 동일한 속성을 갖는 요소에게 적용)
+            E[attribute]: attribute 속성이 포함된 E
+            E[attribute="value"]: attribute 속성이 value인 E 요소
+            E[attribute^="value"]: attribute 속성이 value로 시작하는 E 요소
+            E[attribute$="value"]: attribute 속성이 value로 끝나는 E 요소
+            E[attribute*="value"]: attribute 속성이 value로 포함하는 E 요소
+            ex) input[type=""]
+        10) 가상 클래스 선택자
+            E:link: link에 방문한 적이 없는 E 요소
+            E:visited: link에 방문한 적이 있는 E 요소
+            E:hover: 마우스가 올라가 있는 E 요소
+            E:focus: 포커스가 있는 E 요소 (해당 요소가 활성화)
+            E:first-child: E 요소의 첫번째 요소 
+            E:last-child: E 요소의 마지막 요소
+            ......
+    -->
+    <!-- <div id="header"></div>
+    <div id="nav"></div>
+    <div id="side"></div>
+    <div id="contents"></div>
+    <div id="footer"></div> -->
+
+    <!-- semantic tag -->
+    <!-- block level tag (한 줄에 하나의 요소만 출력) -->
+    <div id="wrap">
+        <header id="header" style="column-rule: crimson;">HEADER</header>
+        <nav id="nav">NAV</nav>
+        <aside id="side">SIDE</aside>
+        <section id="contents">CONTENTS</section>
+        <footer id="footer">FOOTER</footer>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="js/jquery-3.6.0.js"></script> -->
+    <!-- offline download -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- online cdn (contents delivery network)-->
+</head>
+<body>
+    <h1>jQuery event</h1>
+    
+    <h2>=============== mouse event ===================</h2>
+    <p id="p1">#p1 tag</p>
+    <p class="p2">.p2 tag</p>
+    <button id="btn1">#p1 tag hide</button>
+    <button id="btn2">.p2 tag hide</button>
+    
+    <h2>=============== keyboard event ===================</h2>
+    <input id="keyboard" type="text">
+    <div id="keyboard-result"></div>
+
+    <h2>=============== focus/blur event ===================</h2>
+    <input id="focus-blur" type="text">
+    <div id="focus-blur-result"></div>
+
+    <h2>=============== animation event ===================</h2>
+    <button id="hidebtn">Hide</button>
+    <button id="showbtn">Show</button>
+    <button id="togglebtn">Toggle</button>
+    <button id="updownbtn">Up/Down</button>
+    <button id="stopbtn">Stop</button>
+    <div id="panel" 
+    style="border:1px solid gray; 
+    background-color: rgb(180, 230, 213); 
+    width:200px; height:200px; margin-top: 10px;">Animation</div>
+
+    <script>
+        // 1. javascript
+        // window.onload = () => {}
+
+        // 2. jQuery
+        // $().ready(function() {});
+        // $().ready(() => {});
+        // $(function() {});
+        $(() => {
+            // mouse event: click, dblclick, mouseover
+            $("#p1").css({
+                "font-size": "50px",
+                "font-family" : "Times New Roman"
+            });
+
+            $(".p2").css({
+                "background-color": "skyblue"
+            });
+
+            $("#btn1").click(() => $("#p1").hide());
+            $("#btn2").click(() => $(".p2").hide());
+
+            // keyboard event: keydown, keyup, keypress
+            $("#keyboard").keydown((event) => $("#keyboard-result").text(event.keyCode + " key down!"));
+            $("#keyboard").keyup((event) => $("#keyboard-result").text(event.keyCode + " key up!"));
+            $("#keyboard").keypress((event) => $("#keyboard-result").text(event.keyCode + " key press!"));
+
+            // focus/blur event: focus, blur
+            $("#focus-blur").focus(() => $("#focus-blur-result").text("focus!"));
+            $("#focus-blur").blur(() => $("#focus-blur-result").text("blur!"));
+            
+            // animation event: 
+            // hide(speed), show(speed), 
+            // fadeToggle(speed): fadeIn(speed) ↔ fadeOut(speed)
+            // slideToggle(speed): slideUp(speed) ↔ slideDown(speed)
+            // stop()
+            $("#hidebtn").click(()=>$("#panel").hide(3000));
+            $("#showbtn").click(()=>$("#panel").show(3000));
+            $("#togglebtn").click(()=>$("#panel").fadeToggle(3000));
+            $("#updownbtn").click(()=>$("#panel").slideToggle(3000)); 
+            $("#stopbtn").click(()=>$("#panel").stop());
+        });
+    </script>
+</body>
+</html>

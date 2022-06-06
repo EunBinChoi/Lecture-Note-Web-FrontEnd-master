@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>EVENT</h2>
+    
+    <h3>=================== mouse event ====================</h3>
+    <h3 onclick="onclickEvent(this)">mouse click</h3>
+    <h3 ondblclick="ondblclickEvent(this)">mouse double click</h3>
+    <h3 onmouseover="onmouseoverEvent(this)">mouse hover</h3>
+
+    <h3>=================== keyboard event ====================</h3>
+    <h3>keyboard down</h3>
+    <form action="#"><input type="text" onkeydown="onkeydownEvent(document.getElementsByTagName('div')[0])"></form>
+    <div></div>
+    <h3>keyboard up</h3>
+    <form action="#"><input type="text" onkeyup="onkeyupEvent(document.getElementsByTagName('div')[1])"></form>
+    <div></div>
+    <h3>keyboard press</h3>
+    <form action="#"><input type="text" onkeypress="onkeypressEvent(document.getElementsByTagName('div')[2])"></form>
+    <div></div>
+
+    <h3>=================== focus event ====================</h3>
+    <h3>onfocus</h3>
+    <form action="#"><input type="text" onfocus="onfocusEvent(document.getElementsByTagName('div')[3])"></form>
+    <div></div>
+    <h3>onblur</h3>
+    <form action="#"><input type="text" onblur="onblurEvent(document.getElementsByTagName('div')[4])"></form>
+    <div></div>
+    
+    <script>
+        function onclickEvent(id) { id.innerHTML = "click event!"; }
+        function ondblclickEvent(id) { id.innerHTML = "double click event!"; }
+        function onmouseoverEvent(id) { id.innerHTML = "mouse over event!"; }
+
+        // event.keyCode: ascii code (한국어 지원 X)
+        function onkeydownEvent(id) { id.innerHTML = event.keyCode + " key down event!"; }
+        function onkeyupEvent(id) { id.innerHTML = event.keyCode + " key up event!"; }
+        function onkeypressEvent(id) { id.innerHTML = event.keyCode + " key press event!"; }
+
+        function onfocusEvent(id) { id.innerHTML = "focus on event!"; }
+        function onblurEvent(id) { id.innerHTML = "blur event!"; }
+        
+
+        // Q1. 현재 창의 F5 (keycode: 116), backspace (keycode: 8) 불가능하도록 만듦 (alert())
+        window.onkeydown = (event) => {
+            const key = event.keyCode;
+            if(key == 116) {
+                alert("[WARNING] I will block REFRESH event !!!!!");
+                event.preventDefault();
+            }
+            if(key == 8) {
+                alert("[WARNING] I will block BACKSPACE event !!!!!");
+                event.preventDefault();
+            }
+        }
+        
+        
+        
+    </script>
+</body>
+</html>

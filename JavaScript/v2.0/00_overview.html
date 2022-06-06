@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- javascript 작성해서 html 연결하는 방법 -->
+
+    <!-- 1) html 문서 안에 script 태그 안에 코드 작성하는 방법 -->
+    <script></script>
+
+    <!-- 2) 현재 workspace에서 외부에 존재하는 js 파일 연결하는 방법 -->
+    <script (type="text/javascript") src="js/js00.js"></script>
+    <!-- html5부터는 스크립트 태그에 디폴트가 javascript 여서 생략 가능 -->
+
+    <!-- 
+        원래 명칭: ECMAScript (ES)
+        JavaScript: ECMA 사양을 준수하는 스크립트 언어
+           >> Mocha -> LiveScript (web lively) -> JavaScript (java의 마케팅 요소를 따라가기 위해)
+
+        ES5 (2009 ~) VS ES6 (2015 ~)
+            1) var vs let, const
+            2) arrow function (lambda) (ex) const sum = (a, b) => a + b;)
+            3) default parameter in function
+            4) class 추가 (기존에는 class object .. ?)
+                - 기존에는 object (prototype (ex) 당근마켓 면접))
+                - https://medium.com/@bluesh55/javascript-prototype-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-f8e67c286b67
+
+        // : single comment
+        /**/: multi-line comment
+     -->
+</head>
+<body>
+    <!-- 자바스크립트 활용 방법 -->
+    <!-- 1. html 내용 수정 
+        document.getElementById(): 동일한 id를 가진 요소는 무조건 1개 (Element)
+        document.getElementsByClassName(): 동일한 class를 가진 요소는 여러개 올 수 있음 (Elements)
+                                           인덱싱을 이용해서 각 요소를 접근할 수 있음
+        document.getElementsByTagName(): 동일한 tag를 가진 요소는 여러개 올 수 있음 (Elements)
+                                         인덱싱을 이용해서 각 요소를 접근할 수 있음
+    -->
+    <h2>html content change</h2>
+    <div id="title">JavaScript Overview</div>
+    <button onclick="document.getElementById('title').innerHTML='JavaScript End!'">
+        Click me!
+    </button>
+
+    <!-- 2. html 속성 변경 -->
+    <!-- ex) img src 변경  -->
+    <h2>html style change</h2>
+    <img id="img" src="img/lightbulb-off.png" alt="lightbulb-off" style="width: 50px;">
+    <button onclick="document.getElementById('img').src='img/lightbulb-on.png'">
+        Click me!
+    </button>
+
+    <!-- 3. html 스타일 (css) 변경 -->
+    <h2>html css change</h2>
+    <p id="text">font size change</p>
+    <button onclick="document.getElementById('text').style.fontSize='50px'">
+        Click me!
+    </button>
+
+
+    <!-- ex) 버튼 클릭했을 떄 요소를 사라지게 만드는 방법 (2가지) -->
+    <h2>ex) button: 1) display: none (area 사라짐), 2) visibility: hidden (area 사라지지 않음)</h2>
+    <img id="logo" src="img/logo.png" alt="logo" style="width: 100px;">
+    <button onclick="document.getElementById('logo').style.visibility='hidden'">
+        Click me! (visibility: hidden)
+    </button>
+    <button onclick="document.getElementById('logo').style.display='none'">
+        Click me! (display: none)
+    </button>
+
+    <!-- 버튼 클릭했을 때 요소를 삭제하는 방법 -->
+    <ul id="unordered">
+        <li id="one">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <button onclick="document.getElementById('unordered').remove('unordered')">
+        Click me! (remove)
+    </button>
+
+
+
+</body>
+</html>

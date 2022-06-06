@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+body {
+    margin: 0px;
+    /* width: 1000px; */
+    /* height: 1000px; */
+}
+
+.box {
+    border: 1px solid black;
+}
+
+div div {
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    /* display: inline; */
+    /* block level -> inline level */
+
+    float: left;
+    /* block의 height가 0px과 동일해짐 */
+}
+
+div span {
+    background-color: yellowgreen;
+    width: 50px;
+    height: 50px;
+    display: none;
+    /* inline level -> block level */
+
+    /* display
+        
+        inline: inline
+        block: block (한 줄에 하나씩 블록)    
+        inline-block: 한 줄에 여러 개의 블록 
+        (inline 구조를 유지하면서 block 형태로 보이겠다!)
+        none: 해당 요소를 안보게 할 수 있음
+    */
+
+    /* 아무리 inline level 요소에도 
+    block처럼 보이게 할 수도 있음 */
+    /* position: relative; */
+    /* float: left; */
+    clear: left;
+}
+
+.step-box {
+    border: 1px solid black;
+    position: relative;
+    /*  */
+    top: 50px;
+    left: 50px;
+    width: 50px;
+    height: 50px;   
+}
+
+#color-box1 {
+    position: absolute;
+    /* .step-box에서 relative하게 만들었지만
+        #color-box1을 통해 absolute으로 변경
+        
+        우선 순위
+        class 선택자 < id 선택자
+    */
+    top: 200px;
+    left: 200px;
+
+    background-color: red;
+}
+
+#color-box2 {
+    background-color: yellow;
+}
+
+#color-box3 {
+    background-color: green;
+}
+
+#color-box4 {  
+    background-color: blue;
+}
+
+#color-box5 {
+    position: fixed;
+    /* position: relative;  */
+    top: 10px;
+    left: 10px;
+
+    width: 50px;
+    height: 50px;
+    background-color: cornflowerblue;
+    border: 2px dashed red;
+}

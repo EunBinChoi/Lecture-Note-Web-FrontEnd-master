@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+.box {
+    width: 50px;
+    height: 50px;
+}
+
+#id1 {
+    background-color: red;
+    /* display: none; */
+    /* 요소 사라지고 요소 자치하고 있던 공간 사라짐 */
+    /* 반응형 웹 */
+
+    visibility: hidden;
+    /* 요소 사라지고 요소 자치하고 있던 공간 남아있음 */
+}
+
+#id2 {
+    background-color: yellow;
+}
+
+#id3 {
+    background-color: yellowgreen;
+}

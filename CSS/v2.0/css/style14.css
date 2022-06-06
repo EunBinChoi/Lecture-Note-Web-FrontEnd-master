@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+#text-box {
+    width: 300px;
+    height: 200px;
+    background-color: gainsboro;
+    border: 1px solid black;
+    overflow: auto;
+    /* 
+        overflow
+        visible: 내용이 길어도 보여줌 (넘침) 
+        hidden: 넘친 내용은 안보여줌
+        scroll: 스크롤 막대 만듦 (넘침 유무 상관없이)
+        auto: 넘칠 때 스크롤 막대 만듦
+    */
+}

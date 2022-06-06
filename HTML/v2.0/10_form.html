@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- form 태그
+        1) 사용자에게 입력을 받아 서버로 전송할 때 사용하는 태그
+        2) 속성
+            - action: 정보를 받아서 어디로 보낼건지 지정 ("#")
+            - method
+                - get: default, 정보를 header 노출시켜서 전달 (보안 처리 X)
+                       (*) header 노출
+                       (*) http://~~~~~~~~~.com?input1=a&input2=1234..... (query string)
+                       빠름
+                    (ex) 데이터 조회/검색)
+
+                - post: 정보를 body에 포함시켜서 전달 (보안 처리 O) (정확한 보안 처리는 아님)
+                        느림
+                    (ex) 개인정보 데이터를 저장/수정/삭제)
+            - enctype: 파일 업로드할 때 사용
+    -->
+
+    <form method="get" action="01_overview.html">
+        <!-- 텍스트 상자 -->
+        <!-- placeholder: input text 요소가 활성화되기 전에 보여지는 텍스트 -->
+        <label for="input1">ID: </label>
+        <input type="text" id="input1" name="id" placeholder="input text..."/> <br/>
+
+        <label for="input2">Pass: </label>
+        <input type="password" id="input2" name="pass" placeholder="input password..."/> <br/>
+
+        <label for="input3">Number: </label>
+        <input type="number" id="input3" name="number" placeholder="input number..."/> <br/>
+
+        <label for="input4">Email: </label>
+        <input type="email" id="input4" name="email" placeholder="input email..."/> <br/>
+
+        <label for="input5">URL: </label>
+        <input type="url" id="input5" name="url" placeholder="input url..."/> <br/>
+
+        <label for="input6">Tel: </label>
+        <input type="tel" id="input6" name="tel" placeholder="input tel..."/> <br/>
+
+        <label for="input7">Date: </label>
+        <input type="date" id="input7" name="date" placeholder="input date..."/> <br/>
+
+        <label for="input8">Time: </label>
+        <input type="time" id="input8" name="time" placeholder="input time..."/> <br/>
+        
+        <hr/>
+        
+        <!-- 버튼 -->
+        일반 버튼: <input type="button" value="Button"/>  <br/>
+        전송 버튼: <input type="submit" value="Submit"/>   <br/><!-- form에 입력된 데이터를 action으로 전송 -->
+        취소 버튼: <input type="reset" value="Reset"/>  <br/>
+
+        <!-- 숨겨진 데이터 -->
+        숨겨진 데이터: <input type="hidden" name="age" value="20"/>  <br/>
+        <!-- 현재 입력한 데이터가 아닌 이전 폼에서 전달받은 데이터도 숨겨서 같이 전달할 수도 있음 
+            ?id=a&pass=1234&(age=20&address=seoul...) (): 이전 폼에서 전달받은 데이터
+        -->
+
+        <hr/>
+
+        <!-- 라디오 버튼 -->
+        <p>라디오 버튼 (중복 선택 불가)</p>
+        <input type="radio" id="radio-button1" name="gender" value="M"> 남
+        <input type="radio" id="radio-button2" name="gender" value="F" checked="checked"> 여
+        <!-- 남/여: 사용자한테 텍스트를 보여주기 위함
+             gender=M/F: 서버에 전달하기 위함
+
+             id vs name
+             id: css 속성 적용하기 위함 (각 요소마다 unique) (class: unique X)
+             name: 서버에 전달되는 변수이름 지정 (gender=M/F)
+        -->
+
+        <hr/>
+        <!-- 체크 박스 -->
+        <p>체크 박스 (중복 선택 가능)</p>
+        <input type="checkbox" id="checkbox1" name="fruits" value="apple"> 사과
+        <input type="checkbox" id="checkbox2" name="fruits" value="banana"> 바나나
+        <input type="checkbox" id="checkbox3" name="fruits" value="watermelon"> 수박
+        <input type="checkbox" id="checkbox4" name="fruits" value="kiwi"> 키위
+        <!-- .....?fruits=value1&fruits=value2.... -->
+        <hr/>
+
+        <!-- 필드셋 -->
+        <p>필드셋</p>
+        <fieldset>
+            <legend>지역</legend>
+            <!-- 필드셋의 제목 -->
+            <input type="checkbox" id="checkbox5" name="area" value="gangseo"> 강서 <br/>
+            <input type="checkbox" id="checkbox6" name="area" value="gangnam"> 강남 <br/>
+            <input type="checkbox" id="checkbox7" name="area" value="gangbuk"> 강북 <br/>
+            <input type="checkbox" id="checkbox8" name="area" value="gangdong"> 강동 <br/>
+        </fieldset>
+
+        <hr/>
+
+        <!-- textarea -->
+        <!-- : 많은 양의 텍스트를 처리할 때 사용하는 태그
+             : 속성
+                 rows: 행 크기 (rows: 10, 10행)
+                 cols: 열 크기 (cols: 100, 100열)
+         -->
+         <p>textarea</p>
+         <textarea rows="10" cols="100" placeholder="input your story..." style="resize: both;"></textarea>
+
+         <hr/>
+
+         <!-- 목록 상자 (목록 + 선택만 가능) -->
+         <p>목록 상자</p>
+         <select name="addr1">
+            <option value="seoul">서울</option>
+            <option value="gyeonggi">경기</option>
+            <option value="incheon">인천</option>
+            <option value="etc" selected>선택하시오</option>
+            <!-- 사용자 입력 유도하기 위한 용도 & 사용자 입력 예외처리
+
+                사용자 입력 예외처리 (in java)
+                if(addr1.equals("etc")){
+                    sysout("[ERROR].... 주소를 선택해주세요!")
+
+                }
+            -->
+         </select>
+
+         <select name="addr2" size="4" multiple="multiple">
+            <option value="seoul">서울</option>
+            <option value="gyeonggi">경기</option>
+            <option value="incheon">인천</option>
+            <option value="etc" selected>선택하시오</option>
+         </select>
+         <hr/>
+
+         <!-- 콤보 상자 (목록 + 직접 입력도 가능) -->
+         <p>콤보 상자 (combo box) </p>
+         <input type="text" list="animals">
+         <datalist id="animals">
+            <option value="dog">dog</option>
+            <option value="cat">cat</option>
+         </datalist>
+         <hr/>
+
+         <!-- 기타 -->
+         <!-- 진행바 -->
+         50% 진행: <progress value="50" max="100"></progress><br/>
+         <!-- 색상표 -->
+         색상표: <input type="color"><br/>
+         <!-- 범위바 -->
+         범위: <input type="range" min="0" max="100" step="10"><br/>
+         <!-- 파일 첨부 -->
+         파일 첨부: <input type="file">
+    </form>
+</body>
+</html>

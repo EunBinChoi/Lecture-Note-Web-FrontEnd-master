@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="#">
+</head>
+<body>
+    <script>
+        /*
+            HTTP (HyperText Transfer Protocol (규약, 약속))
+            : HyperText: 하이퍼링크, 이미지, 문서 등 모든 리소스
+            : 클라이언트와 서버 사이에 이루어진 요청 (request)/ 응답 (response) 통신망
+
+
+            서버에서 데이터를 요청해서 받아오는 방법?
+            1) AJAX
+            2) XML
+            3) JSON (JavaScript Object Notation)
+            : https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json
+            : 데이터를 주고 받을 때 쓸 수 있는 간단한 포맷
+            : 텍스트 기반 {key:value} (string)
+            : JS뿐만 아니라 다른 프로그래밍 언어에서도 사용 가능
+
+            object ------ serialize (stringfication) ------> string
+            object <---- deserialize (parsing) ------------ string
+            
+            (*) 서버와 통신을 하려면 string으로 변경
+            (*) JSON 객체의 속성값을 추출해서 원하는 작업을 하고 싶다면 object으로 변경
+        */
+
+        // 1) Object to JSON (string)
+        let json = JSON.stringify(true); 
+        // true (boolean) (object) -> "true" (string)
+        console.log(json);
+        console.log(typeof(json)); // string
+
+        json = JSON.stringify(['apple', 'banana']); 
+        // ['apple', 'banana'] (array) (object) -> "['apple', 'banana']" (string)
+        console.log(json);
+        console.log(typeof(json)); // string
+
+        const rabbit = {
+            name: "tori",
+            color: "white",
+            birthDate: new Date()
+        }
+        // 원하는 속성만 골라서 stringify
+        json = JSON.stringify(rabbit, ['name', 'color']);
+        console.log(json);
+        console.log(typeof(json)); // string
+
+        // 2) JSON (string) to Object
+        const obj = JSON.parse(json);
+        console.log(obj);
+        console.log(typeof(obj)); // object
+
+        ////////////////////////////////////////////////////////////////////
+        // https://developer.mozilla.org/ko/docs/Learn/JavaScript/Objects/JSON
+
+        const requestURL = "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+        const request = new XMLHttpRequest(); // XHR, 서버랑 클라이언트의 통신하기 위한 객체 생성
+        request.open('GET', requestURL);
+
+        // request.responseType = 'json'; // string -> object
+        // responseType의 default값은 'text' (string)
+        // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
+ 
+        request.send();
+
+        request.onload = () => {
+            console.log(typeof(request.response)) // string
+            const response = JSON.parse(request.response); // string -> object
+            // client가 string -> object으로 직접 변환해줘야 함! (JSON.parse())
+            console.log(response);
+            console.log(typeof(response)); // object
+
+            // 속성을 통해 값을 접근
+            console.log(response["squadName"]);
+            console.log(response.squadName);
+            console.log(response["homeTown"]);
+            console.log(response.homeTown);
+            console.log(response["members"][2]["powers"]);
+
+            // Q1. Madame Uppercut의 나이를 출력
+            console.log(response["members"][1]["age"]);
+
+            // Q2. Molecule Man의 secretIdentity를 출력
+            console.log(response["members"][0]["secretIdentity"]);
+        };
+
+    </script>
+</body>
+</html>

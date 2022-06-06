@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style07.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <!-- block level 
+            block 기준이기 때문에
+            width, height가 존재하면
+            block이 생김
+        -->
+        <div id="div1" class="box"></div>
+        <div id="div2" class="box"></div>
+        <div id="div3" class="box"></div>
+        <div id="div4" class="box"></div>
+        <div id="div5" class="box"></div>
+    </div>
+
+    <!-- span은 width, height를 크게 주어도
+    입력한 텍스트에 맞게 background-color가 지정됨 -->
+    <div>
+        <!-- inline level 
+            텍스트 기반이기 때문에
+            아무리 width, height가 존재한다고 해도
+            텍스트가 없으면 아무것도 안생김
+        -->
+        <span id="span1" class="box">1</span>
+        <span id="span2" class="box">2</span>
+        <span id="span3" class="box">3</span>
+        <span id="span4" class="box">4</span>
+        <span id="span5" class="box">5</span>
+    </div>
+
+    <!-- position
+        absolute: 기존 요소와 관계없이 절대적으로 위치 결정
+        relative: 기존 요소에 상대적으로 위치 결정
+        fixed: viewport가 달라져도 (스크롤링 되어도) 
+               viewport에 맞게 고정된 위치에 놓임
+    -->
+    
+    <div id="color-box5"></div>
+
+
+    <div id="color-box1" class="step-box">
+        <div id="color-box2" class="step-box">
+            <div id="color-box3" class="step-box">
+                <div id="color-box4" class="step-box"></div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

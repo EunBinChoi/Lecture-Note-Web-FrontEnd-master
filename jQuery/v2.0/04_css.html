@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- online cdn (contents delivery network)-->
+
+    <style>
+        .blue {
+            color: blue;   
+        }
+
+        .imp {
+            font-size: xx-large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+
+    <div>This is some important text!</div><br>
+
+    <button id="add">Add classes to elements</button>
+    <button id="remove">Remove classes to elements</button>
+    <button id="toggle">Toggle classes to elements</button>
+    <button id="css">Background Color Change</button>
+    
+    <script>
+        /*
+            css
+
+            addClass(): 선택한 요소에 클래스를 추가
+            removeClass(): 선택한 요소에 클래스를 삭제
+            toggleClass(): 선택한 요소에 클래스 전환 (추가 ↔ 삭제)
+            css(): 스타일 속성 설정
+        
+        */
+
+        $(() => {
+            $("#add").click(() => {
+                $("p, h1, h2").addClass("blue");
+                $("div").addClass("imp");
+            });
+
+            $("#remove").click(() => {
+                $("p, h1, h2").removeClass("blue");
+                $("div").removeClass("imp");
+            });
+
+            $("#toggle").click(() => {
+                $("p, h1, h2").toggleClass("blue");
+                $("div").toggleClass("imp");
+            });
+
+            $("#css").click(() => {
+                $("p, h1, h2").css({"background-color":"beige"});
+                $("div").css({"background-color":"beige"});
+            });
+        }); 
+
+    </script>
+</body>
+</html>

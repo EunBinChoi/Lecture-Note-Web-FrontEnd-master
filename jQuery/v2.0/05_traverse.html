@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- online cdn (contents delivery network)-->
+
+    <style>
+        body, div, span, ul, li, p, h1, h2, h3, h4, h5, h6 {
+            border: 2px solid grey;
+            color: grey;
+
+            /* margin / padding */
+            margin: 15px;
+            padding: 5px;
+            
+            /* display */
+            display: block;
+        }
+        
+        .apply-cls {
+            color: red;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="div" id="div1">#div1
+        <div class="first">#div1 .first
+            <ul>ul
+                <li>li
+                    <span class="cls-span">#div1 .first .cls-span</span>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="second">#div1 .second
+            <p>p
+                <span class="cls-span">#div1 .second .cls-span</span>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="div" id="div2">#div2
+        <p>p
+            <span>outer span<span>inner span</span></span>
+        </p>
+        <p>p
+            <span>span</span>
+        </p>
+    </div>
+
+    <div class="div" id="div3">#div3
+        <p class="first">#div3 .first
+            <span>span</span>
+        </p>
+        <p class="second">#div3 .second
+            <span>span</span>
+        </p>
+    </div>
+
+    <div class="div" id="div4">#div4
+        <p>p
+            <span>outer span<span>inner span</span></span>
+        </p>
+        <p>p
+            <span>span</span>
+        </p>
+    </div>
+
+    <div class="div" id="div5">#div5
+        <p>p
+            <span>span</span>
+        </p>
+        <p>p
+            <span>span</span>
+        </p>
+    </div>
+
+    <div class="div" id="div6">#div6
+        <div>p
+            <span>span</span>
+            <p>p</p>
+            <p>p</p>
+        </div>
+        <span>span
+            <span>span</span>
+            <p>p</p>
+            <p>p</p>
+        </span>
+        <div>p
+            <span>span</span>
+            <p>p</p>
+            <p>p</p>
+        </div>
+        <div>p
+            <span>span</span>
+            <p>p</p>
+            <p>p</p>
+        </div>
+        <span>span
+            <span>span</span>
+            <p>p</p>
+            <p>p</p>
+        </span>
+    </div>
+
+    <div class="div" id="div7">#div7
+        <p>p</p>
+        <span>span</span>
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <p>p</p>
+    </div>
+  
+
+    <script>
+        /*
+            순회 (traverse)
+            : DOM 트리로 가로짓는 것 (이동 의미)
+            : 원하는 요소를 찾을 수 있음!
+
+            1) 조상
+            parent(): 직계 부모 반환
+            parents(): 모든 상위 요소 반환
+            parentsUntil(arg): 주어진 인자 사이에 (전까지) 모든 상위 요소 반환
+
+            2) 자손
+            children(): 직계 자식 반환
+            find(): 모든 하위 요소 반환
+
+            3) 형제/자매
+            sibling(): 모든 형제/자매 반환
+            next(): 다음 형제/자매 요소 반환
+            nextAll(): 다음 형제/자매 모든 요소 반환
+            nextUntil(arg): 주어진 요소 사이에 (전까지) 모든 다음 형제/자매 요소 반환
+            prev(): 이전 형제/자매 요소 반환
+            prevAll(): 이전 형제/자매 모든 요소 반환
+            prevUntil(arg): 주어진 요소 사이에 (전까지) 모든 이전 형제/자매 요소 반환
+
+            ================================================================
+
+            순회 필터링 (filtering)
+
+            first(): 첫번째 요소 반환
+            last(): 마지막 요소 반환
+            eq(index): 특정 인덱스 번호의 요소 반환 (index: 0 ~)
+            filter(): 기준에 맞는 요소 반환
+            not(): 기준에 맞지 않은 요소 반환
+
+        
+        */
+
+        
+        $(() => {
+            // Q1. .cls-span parent() css({"color":"red", "border":"2px solid red"})
+            // $("#div1 .first .cls-span").parent().addClass("apply-cls");
+            // $("#div1 .second .cls-span").parent().addClass("apply-cls");
+            
+            // Q2. .cls-span parents() css({"color":"red", "border":"2px solid red"})
+            // $("#div1 .first .cls-span").parents().addClass("apply-cls");
+            // $("#div1 .second .cls-span").parents().addClass("apply-cls");
+
+
+            // Q3. #div1 .first .cls-span parentsUntil("#div1 .first") css({"color":"red", "border":"2px solid red"})
+            // $("#div1 .first .cls-span").parentsUntil("#div1 .first").addClass("apply-cls");
+            // $("#div1 .second .cls-span").parentsUntil("#div1 .second").addClass("apply-cls");
+        
+            // $("#div2").children().addClass("apply-cls");
+            // $("#div3").children("#div3 p.first").addClass("apply-cls");
+            // $("#div4").find("span").addClass("apply-cls");
+            // div4의 자손들 중에서 span부터 하위 요소 반환
+
+            // $("#div7 h2").siblings().addClass("apply-cls");
+            // $("#div7 h2").siblings("p").addClass("apply-cls");
+            // $("#div7 h2").next().addClass("apply-cls");
+            // $("#div7 h2").nextAll().addClass("apply-cls");
+            // $("#div7 h2").nextUntil("p").addClass("apply-cls");
+            // $("#div7 h2").prev().addClass("apply-cls");
+            // $("#div7 h2").prevAll().addClass("apply-cls");
+            // $("#div7 h2").prevUntil("p").addClass("apply-cls");
+        
+            // $("div").first().addClass("apply-cls");
+            // $("div").last().addClass("apply-cls");
+            // $("div").eq(1).addClass("apply-cls");
+            // $("div").eq(2).addClass("apply-cls");
+
+            // Q1. div5의 자식들 중에서 2번째 자식 선택 (인덱스 1)
+            // $("#div5").children().eq(1).addClass("apply-cls");
+
+            // Q2. div2의 형제자매들 중에서 3번째 형제자매를 선택 (인덱스 2)
+            // $("#div2").siblings().eq(2).addClass("apply-cls");
+
+            // Q3. div2의 형제자매들 중에서 3번째 형제자매와 그 요소의 자손을 모두 선택 (인덱스 2)
+            // 1)
+            // let sibling = $("#div2").siblings().eq(2);
+            // while (sibling.length > 0) {
+            //     sibling.addClass("apply-cls");
+            //     sibling = sibling.children();
+            // }
+
+            // 2)
+            // let sibling = $("#div2").siblings().eq(2);
+            // sibling.addClass("apply-cls");;
+            // sibling.find('*').addClass("apply-cls");
+
+            // Q4. div4의 자손들 중에서 span 태그 요소 자손 선택 (filter() 이용)
+            // 1)
+            // $("#div4").find("span").addClass("apply-cls");
+            // $("#div4").find("*").filter("span").addClass("apply-cls");
+
+            // 2)
+            // let children = $("#div4").children();
+            // while (children.length > 0) {
+                // children.filter("span").addClass("apply-cls");
+                // children = children.children();
+            // }
+
+            // Q5. div6의 자손들 중에서 span 태그 요소를 제외한 자손 선택 (not() 이용)
+            // 1)
+            // $("#div6").find("*").not("span").addClass("apply-cls");
+
+            // 2)
+            // let children = $("#div6").children();
+            // while (children.length > 0) {
+            //     children.not("span").addClass("apply-cls");
+            //     children = children.children();
+            // }
+        });
+
+
+    </script>
+</body>
+</html>

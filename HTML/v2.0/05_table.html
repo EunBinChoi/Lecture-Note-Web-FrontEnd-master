@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- table tag
+        
+        <tr>: table row (행 만듦)
+        <th>: table horizontal (열 이름) (bold, 가운데 정렬)
+        <td>: table data (데이터)
+        
+        <rowspan>: 행 병합
+        <colspan>: 열 병합
+
+        * cellpadding: 셀 내부 간격
+        * cellspacing: 셀과 셀 간격 (셀 외부 간격)
+    -->
+    <table border="4"> 
+        <!-- border 속성의 값이 커질수록 table 가장 바깥쪽 테두리가 두꺼워짐 -->
+        <tr>
+            <th>학생번호</th>
+            <th>학생이름</th>
+            <th>학과</th>
+        </tr>
+        <tr>
+            <td>1111</td>
+            <td>Smith</td>
+            <td>CS</td>
+        </tr>
+    </table>
+    <br/>
+    <table border="1" style="border-collapse: collapse;" width="300">
+        <!-- border-collapse: collapse는 테두리가 한 줄처럼 보임  -->
+        <tr>
+            <th>학생번호</th>
+            <th>학생이름</th>
+            <th>학과</th>
+        </tr>
+        <tr>
+            <td>1111</td>
+            <td>Smith</td>
+            <td>CS</td>
+        </tr>
+    </table>
+    <br/>
+
+    <table border="1" cellspacing="0" cellpadding="5">
+        <!-- cellspacing="0": 테두리가 두 줄 다 보이는데 두 줄 사이에 간격이 없음  -->
+        <tr align="center">
+            <th>학생번호</th>
+            <th>학생이름</th>
+            <th>학과</th>
+        </tr>
+        <tr align="center">
+            <td>1111</td>
+            <td>Smith</td>
+            <td>CS</td>
+        </tr>
+    </table>
+    <br/>
+
+    <!-- table 병합 -->
+    <table border="1" style="border-collapse: collapse;">
+        <tr>
+            <th>이름</th>
+            <th>학번</th>
+            <th colspan="3">취미</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>1111</td>
+            <td>운동하기</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>김자바</td>
+            <td>2222</td>
+            <td>코딩하기</td>
+            <td>노래듣기</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>이클립</td>
+            <td>3333</td>
+            <td>게임하기</td>
+            <td>산책하기</td>
+            <td>영화감상</td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+    <hr/>
+
+    <!-- 테이블 연습문제 -->
+    <h1>테이블 연습문제</h1>
+    <h3>Q1.</h3> 
+    <img src="./img/table-practice1.png" alt="table-practice1"><br/>
+
+    <table border="1" style="border-collapse: collapse;" 
+    cellpadding="5px" width="500px">
+        <tr align="center">
+            <th>학생번호</th>
+            <th>학급번호</th>
+            <th>학생이름</th>
+            <th>성적</th>
+        </tr>
+        <tr align="center">
+            <td>1</td>
+            <td rowspan="2">1</td>
+            <td>홍길동</td>
+            <td>90</td>
+        </tr>
+        <tr align="center">
+            <td>2</td>
+            <td>홍순이</td>
+            <td>80</td>
+        </tr>
+        <tr align="center">
+            <td>3</td>
+            <td rowspan="2">3</td>
+            <td>이클립</td>
+            <td>30</td>
+        </tr>
+        <tr align="center">
+            <td>4</td>
+            <td>김자바</td>
+            <td>20</td>
+        </tr>
+        <tr align="center">
+            <td>5</td>
+            <td>2</td>
+            <td>오라클</td>
+            <td>50</td>
+        </tr>
+    </table>
+
+    <h3>Q2-1.</h3>
+    <img src="./img/table-practice2-1.png" alt="table-practice2-1"><br/>
+    
+    
+    <table border="1" width="200px">
+        <tr>
+            <td colspan="4">1</td>
+            <td rowspan="7">2</td>
+        </tr>
+        <tr>
+            <td rowspan="5">3</td>
+            <td rowspan="4">4</td>
+            <td colspan="2">5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td rowspan="4">7</td>
+        </tr>
+        <tr>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td colspan="2">10</td>
+        </tr>
+        <tr>
+            <td colspan="4">11</td>
+        </tr>
+    </table>
+
+    <h3>Q2-2.</h3>
+    <img src="./img/table-practice2-2.png" alt="table-practice2-2" width="200"><br/>
+
+    <!-- 나선형으로 번호 출력 -->
+    <table border="1" width="200px" style="border-collapse: collapse;" width="500" height="300">
+        <tr align="center">
+            <td colspan="7">13</td>
+        </tr>
+        <tr align="center">
+            <td rowspan="5">10</td>
+            <td colspan="5">9</td>
+            <td rowspan="12">12</td>
+        </tr>
+        <tr align="center">
+            <td rowspan="3">6</td>
+            <td colspan="3">5</td>
+            <td rowspan="4">8</td>
+        </tr>
+        <tr align="center">
+            <td>2</td>
+            <td>1</td>
+            <td rowspan="2">4</td>
+        </tr>
+        <tr align="center">
+            <td colspan="2">3</td>
+        </tr>
+        <tr align="center">
+            <td colspan="4">7</td>
+        </tr>
+        <tr align="center">
+            <td colspan="6">11</td>
+        </tr>
+    </table>
+
+    <h3>Q2-3.</h3>
+    <img src="./img/table-practice2-3.png" alt="table-practice2-3" width="200"><br/>
+
+    <!-- 나선형으로 번호 출력 -->
+    <table border="1" width="200px" style="border-collapse: collapse;" width="500" height="300">
+        <tr align="center">
+            <td colspan="5">12</td>
+            <td rowspan="7">11</td>
+        </tr>
+        <tr align="center">
+           <td rowspan="5">9</td>
+           <td colspan="4">8</td>
+        </tr>
+        <tr align="center">
+           <td rowspan="3">5</td>
+           <td colspan="2">4</td>
+           <td rowspan="4">7</td>
+        </tr>
+        <tr align="center">
+            <td>1</td>
+            <td rowspan="2">3</td>
+        </tr>
+        <tr align="center">
+           <td>2</td>
+        </tr>
+        <tr align="center">
+            <td colspan="3">6</td>
+        </tr>
+        
+    </table>
+
+
+   
+</body>
+</html>

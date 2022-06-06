@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+
+body {
+    margin: 0px;
+    height: 5000px;
+}
+
+
+section {
+    display: flex;
+
+    /* center at cross axis */
+    align-items: center;
+
+    /* space around at main axis */
+    justify-content: space-around;
+
+    height: 800px;
+    width: 100%;
+
+    /* background (browser zoom-out) */
+    background: url(https://www.starbucks.co.kr/common/img/main/fav_prod_bg_new.jpg) fixed;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    /* background-color: #45434c; */
+    background-size: auto 100%;
+    
+
+    padding: 10%;
+}
+
+section .intro-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+    width: 40%;
+    color: white;
+
+    padding-right: 10%;
+}
+
+section .title {
+    margin-bottom: 10%;
+    animation: slide-in-title 2s ease-out;
+}
+
+section .subtitle {
+    animation: slide-in-subtitle 2s ease-out;
+}
+
+section .intro-img {
+    display: flex;
+    width: 60%;
+}
+
+/* animation (intro-text) */
+@keyframes slide-in-title {
+    from {
+        position: absolute;
+        top: 370px;
+        left: -100px;
+        opacity: 0;
+    }
+
+    to {
+        position: absolute;
+        top: 370px;
+        left: 615px;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out-title {
+    from {
+        position: absolute;
+        top: 370px;
+        left: 615px;
+        opacity: 1;
+    }
+
+    to {
+        position: absolute;
+        top: 370px;
+        left: -100px;
+        opacity: 0;
+    }
+}
+
+
+@keyframes slide-in-subtitle {
+    from {
+        position: absolute;
+        top: 646px;
+        left: -100px;
+        opacity: 0;
+    }
+
+    to {
+        position: absolute;
+        top: 646px;
+        left: 507px;
+        opacity: 1;
+    }
+}

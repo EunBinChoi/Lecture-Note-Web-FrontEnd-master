@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+body {
+    margin: 0px;
+}
+
+.container {
+    background-color: beige;
+    height: 100vh;
+    display: flex;
+}
+
+.item {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+/* flex-grow (기본값: 0) / flex-shrink (기본값: 1)
+    viweport에 맞게 각 item의 가로 길이가 늘어남 / 줄어듦
+
+    item1: flex-grow / shrink: 2
+    item2: flex-grow / shrink: 1
+    item3: flex-grow / shrink: 1
+
+    2 : 1 : 1으로 늘어남 / 줄어듦
+*/
+.item1 {
+    background-color: #ef9a9a;
+    /* order: 2; */
+    /* flex-grow: 2; */
+    /* 아이템이 늘어났을 때 얼마나 빨리 늘어나게 할 것인지 (브라우저 가로 길이 조절) */
+    /* flex-shrink: 2; */
+    /* 아이템이 줄어들었을 때 얼마나 빨리 줄어들게 할 것인지 (브라우저 확대) */
+    /* flex-basis: 90%; */
+    /* 아이템의 초기 사이즈 지정 */
+
+    flex: 2 2 90%;
+    /* 2: flex-grow, 2: flex-shrink, 90%: flex-basis */
+}
+
+.item2 {
+    background-color: #f48fb1;
+    /* order: 1; */
+    /* flex-grow: 1; */
+    /* flex-shrink: 1; */
+    /* flex-basis: 5%; */
+    flex: 1 1 5%;
+}
+
+.item3 {
+    background-color: #ce93d8;
+    /* order: 3; */
+    /* flex-grow: 1; */
+    /* flex-shrink: 1; */
+    /* flex-basis: 5%; */
+    flex: 1 1 5%;
+}

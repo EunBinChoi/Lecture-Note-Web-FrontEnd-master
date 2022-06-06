@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/js21.js" defer></script>
+</head>
+
+<body>
+    <form name="signup" action="#" method="post" 
+    /*onsubmit="return isValidForm('signup')"*/>
+        <label for="name">NAME: </label><input type="text" id="name" name="name" 
+        onblur="isValidName(document.forms['signup']['name'].value)"><br />
+        
+        <label for="id">ID: </label><input type="text" id="id" name="id"
+        onblur="isValidID(document.forms['signup']['id'].value)"><br />
+
+        <label for="password">PASSWORD: </label><input type="password" id="password" name="password"
+        onblur="isValidPass(document.forms['signup']['password'].value)"><br />
+
+        <label for="email">EMAIL: </label><input type="email" id="email" name="email"
+        onblur="isValidEmail(document.forms['signup']['email'].value)"><br />
+
+        <label for="location">LOCATION: </label>
+        <select id="location" name="location" 
+        onblur="isValidLocation(document.forms['signup']['location'].value)"><br />
+            <option value="0" selected>::지역선택::</option>
+            <option value="1">::서울::</option>
+            <option value="2">::경기::</option>
+            <option value="3">::인천::</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

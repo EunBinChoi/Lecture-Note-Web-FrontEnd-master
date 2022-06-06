@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            function
+            * 함수 이름: 문자, 숫자, _, $  기호 가능
+            * 매개변수의 디폴트 값 지정
+            * 매개변수는 함수 내에서 지역 변수로 작동
+
+            1) 선언식 함수: 이름이 있는 함수
+            2) 표현식 함수: 이름이 없는 함수 (익명 함수, 일회성 함수)
+              : 변수에 의존하면서 살고 있고 함수 선언에 도달해야만 호출 가능해짐
+              : 함수 호출은 변수 이름();
+            3) 자기 호출 함수 (IIFE, Immediately Invoked Function Expression)
+              : 표현식 함수, 만들면 바로 호출되는 함수
+              : 프로그램 테스트할 때 사용 (다른 함수들과 충돌 방지!) 
+              : 표현식 함수 + ();
+        */
+       
+        //////////////////////////////////////////////////
+        myFunc();
+        // 1) 선언식 함수
+        // 함수가 호이스팅이 됨
+        function myFunc() {
+            console.log("myFunc()");
+        }
+        
+        //////////////////////////////////////////////////
+        console.log(fun); // undefined
+        // fun(); // error. 함수라는 것을 모르기 때문에 호출 불가능 (var fun;) 
+        // 2) 표현식 함수
+        // : 변수가 호이스팅이 되는 것이지 함수가 호이스팅되는 건 아님
+        // var fun = function () {
+        //     console.log("fun");
+        // }
+        // fun(); // ok.
+
+        // Arrow Function (ES6)
+        // () => {}
+        var fun = () => {console.log("fun")};
+        // fun();
+
+        // 디폴트 값 지정 (매개변수의 뒤쪽부터 차근차근 설정)
+        function yourFunc(a, b="default"){
+            console.log(a); // "msg1"
+            console.log(b); // 
+        }
+
+        yourFunc("msg1", "msg2");
+        yourFunc("msg1");
+
+        // 가변 매개변수 (Rest 매개변수) (ES6)
+        function ourFunc(...args){ // 배열 형태 전달
+            console.log(args);
+            console.log(typeof(args)); // object
+        }
+        ourFunc();
+        ourFunc(1);
+        ourFunc(1, 2);
+        
+        const arr = [1, 2, 3, 4];
+        ourFunc(arr, 5);
+
+        //////////////////////////////////////////////////
+        // 3) 자기 호출 함수 (IIFE)
+        (function(){
+            console.log('IIFE');
+        })();
+
+        // Arrow Function
+        (() => {console.log('IIFE')})();
+
+        //////////////////////////////////////////////////
+        // 중첩 함수
+        
+        function circle(r) {
+            function square(r) { // circle 안에서만 사용되는 함수 (외부에서 직접 호출 X)
+                // return Math.pow(r, 2);
+                // return r ** 2;
+                return r * r;
+            }
+            return Math.PI * square(r);
+        }
+        const area = circle(3);
+        console.log(area);
+
+        //////////////////////////////////////////////////
+        // closure (함수 + 어휘적 환경 (lexical-scope))
+        // : 함수의 주소값만 넘기는 것이 아니라 
+        // 그 함수의 실행 환경 (어떤 변수가 살고 있는지.. or 변수 값이 얼만지)를 같이 넘긴다!
+        function makeAdder(x) {
+            let y = 1;
+            return function(z) {
+                y = 100;
+                return x + y + z;
+            };
+        }
+        let add5 = makeAdder(5); // + (x:5, y:1)
+        let add10 = makeAdder(10); // + (x:10, y:1)
+
+        console.log(add5(2)); // 107 (x:5, y:100, z:2)
+        console.log(add10(2)); // 112 (x:10, y:100, z:2)
+
+        function makeFunc(){
+            let name = "Sally";
+
+            return function() {
+                console.log(name);
+            }
+        }
+
+        let func = makeFunc(); // (+ let name: "Sally")
+        func();
+
+
+    </script>
+</body>
+</html>

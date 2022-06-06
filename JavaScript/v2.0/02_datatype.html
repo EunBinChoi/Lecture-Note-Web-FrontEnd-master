@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // datatype: number, string ('', ""), boolean
+        // ex) "hello 'javascript' world"
+        // ex) 'hello "javascript" world'
+        // ex) "hello "javascript" world" (x)
+        // ex) 'hello 'javascript' world' (x)
+        // typeof() 함수를 통해 데이터 타입을 확인 가능
+
+        // 자료형 동적 결정
+        // let a;
+        // console.log(a); 
+        // console.log(typeof(a));
+        // // 데이터가 할당되지 않았을 경우에는 undefined
+
+        // a = null;
+        // console.log(a);
+        // console.log(typeof(a));
+        // // 해당 변수에 아무런 데이터도 넣지 않겠어! (명시적으로 할당해야함)
+
+        // a = 100;
+        // console.log(a);
+        // console.log(typeof(a));
+
+        // a = "hello";
+        // console.log(a);
+        // console.log(typeof(a));
+        
+        // java
+        // int a = 100;
+        // a = "s"; // error
+
+
+        // 변수 선언: 데이터 타입을 명시할 필요 없음 (데이터 할당시에 결정)
+        // var (ES5) vs let, const (ES6)
+        // var, let (변수)
+        // const (상수)
+        // const (데이터 재할당하지 않을 경우) > let (데이터 재할당할 경우) > var
+        
+
+        // 자바스크립트 변수/함수명 스타일: lowerCamelCase
+        // ex) smallFunction, byClassFunction, yourName, myName....
+
+
+
+        // hoisting (호이스팅): 끌어올림 
+        // 페이지를 두 번 읽음
+        // 1) 현재 페이지에는 어떤 변수가 있지? (undefined 초기화)
+        // 2) 페이지를 읽으면서 실행
+        // ex) var (중복 선언도 가능, 변수 할당 전에 변수 먼저 사용도 가능)
+        // ex) let, const (x) (중복 선언도 불가능, 변수 할당 전에 변수 먼저 사용도 불가능)
+
+        
+        // console.log(a); 
+        // var a = 3;
+        // console.log(a); 
+
+        // console.log(a); // undefined
+        // var a = 3;
+        // console.log(a); // 3
+        // var a = 10;
+        // console.log(a); // 10
+
+        // console.log(a); // error
+
+        // let에는 호이스팅이 없음
+        // console.log(a); // error
+        // let a;
+
+
+        // let a;
+        // console.log(a); 
+        // let a; // error
+        // Q2. 출력이 될까?
+        // let a가 중복 선언이 되었기 때문에 에러가 먼저 출력이 됨
+        // 정확하게는 let에는 호이스팅이 있음!!! 
+
+        // (*) var와 다른 점 
+        // : let의 호이스팅은 변수 선언줄을 기억함!
+        // : 변수를 사용할 경우에 변수 선언줄보다 나중에 나왔는지 순서 확인!
+
+        // const a; // error (상수는 무조건 초기화!)
+        // Q1. 상수에서는 undefined가 나올 수 있을까? => X
+
+
+
+        // Q1. 실행 순서?
+        // console.log(d);
+        // var a = 3;
+        // console.log(c);
+        // console.log(b);
+        // console.log(a);
+        // var b = 5;
+        // var c = 7;
+        // var d = 10; 
+
+        // var a;
+        // var b;
+        // var c;
+        // var d;
+        // console.log(d); // undefined
+        // a = 3;
+        // console.log(c); // undefined
+        // console.log(b); // undefined
+        // console.log(a); // 3
+        // b = 5;
+        // c = 7;
+        // d = 10;
+        
+        // Q2.
+        // console.log(a); // undefined
+        // var a = 10;
+        // console.log(a); // 10
+
+        // Q3.
+        // var b;
+        // console.log(b); // undefined
+
+        // Q4.
+        // let c;
+        // console.log(c); // undefined 
+
+        // Q5.
+        // console.log(d); // error (선언보다 사용을 먼저 함)
+        // let d;
+        // console.log(d);
+
+        // Q6.
+        // const e; // error (상수인데 초기화하지 않음)
+        // console.log(e);
+
+        // Q7.
+        const f = 3;
+        f = 10; // error (상수인데 재할당함)
+        console.log(f);
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        ////////////////////////////////////////////////////////////
+        // 클래스 상속 (inheritance)
+
+        // @ts-check
+        // typescript check
+        // javascript도 typescript처럼 type check가 가능!
+
+        /** 
+         * Class representating a Point
+         * @type {Point}
+         */
+        class Point {
+            /** 
+             * Point may be constructed by two numbers
+             * @param {number} x - x-coordinate 
+             * @param {number} y - y-coordinate
+             */
+            constructor(x, y) {
+                /** @type {number} */
+                this.x = x; // setter
+                
+                /** @type {number} */
+                this.y = y; // setter
+            }
+
+            /** 
+             * x-coordinate may be set by a number
+             * @param {number} x - x-coordinate 
+             */
+            set x(x) {this._x = x;}
+
+            /** 
+             * y-coordinate may be set by a number
+             * @param {number} y - y-coordinate 
+             */
+            set y(y) {this._y = y;}
+
+
+            get x() {return this._x;}
+            get y() {return this._y;}
+        }
+
+        /** 
+         * Class representating a Shape (which is parent class of Circle, Rectangle, Triangle)
+         * @type {Shape}
+         */
+        class Shape {
+
+            /** 
+             * Center Point of a Shape may be defined by Point class
+             * @param {Point} pc 
+             */
+            constructor(pc) {
+                /** @type {Point} */
+                this.pc = pc;
+            }
+            
+            get p() {return this._pc;}
+
+            /** 
+             * Center Point of a Shape may be set by Point class
+             * @param {Point} pc 
+             */
+            set p(pc) {this._pc = pc;}
+
+            draw() {
+                console.log('Draw Shape!');
+            }
+        }
+
+
+        /** 
+         * Class representating a Circle
+         * @type {Circle}
+         */
+        class Circle extends Shape {
+            /** 
+             * @param {Point} pc - Center point of Circle
+             * @param {number} r - Radius of Circle
+             */
+            constructor(pc, r) {
+                /** @type {Point} */
+                super(pc);
+
+                /** @type {number} */
+                this.r = r;
+            }
+            
+            get r() {return this._r;}
+
+            /** 
+             * Radius of Cicle may be set by a number
+             * @param {number} r
+             */
+            set r(r) {this._r = r;}
+
+            draw() { // override
+                console.log('Draw Circle!');
+            }
+
+            area() {
+                return Math.PI * Math.pow(this.r, 2);
+            }
+        }
+
+
+        /** 
+         * 
+         * Class representating a Triangle
+         * @type {Triangle}
+         */
+         class Triangle extends Shape {
+
+            /** 
+             * @param {Point} pc - Center point of Triangle
+             * @param {number} w - Width of Triangle
+             * @param {number} h - Height of Triangle
+             */
+            constructor(pc, w, h) {
+                /** @type {Point} */
+                super(pc);
+
+                /** @type {number} */
+                this.w = w;
+            
+                /** @type {number} */
+                this.h = h;
+            }
+            
+            get w() {return this._w;}
+            /** 
+             * Width of Triangle may be set by a number
+             * @param {number} w
+             */
+            set w(w) {this._w = w;}
+
+            get h() {return this._h;}
+
+            /** 
+             * Height of Triangle may be set by a number
+             * @param {number} h
+             */
+            set h(h) {this._h = h;}
+
+            draw() { // override
+                console.log('Draw Triangle!');
+            }
+
+            area() {
+                return 1/2 * this._w * this._h;
+            }
+        }
+
+
+        /** 
+         * Class representating a Rectangle
+         * @type {Rectangle}
+         */
+         class Rectangle extends Shape {
+            /** 
+             * @param {Point} pc - Center point of Rectangle
+             * @param {number} w - Width of Rectangle
+             * @param {number} h - Heoght of Rectangle
+             */
+            constructor(pc, w, h) {
+                /** @type {Point} */
+                super(pc);
+
+                /** @type {number} */
+                this.w = w;
+            
+                /** @type {number} */
+                this.h = h;
+            }
+            
+            get w() {return this._w;}
+
+             /** 
+             * Width of Rectangle may be set by a number
+             * @param {number} w
+             */
+            set w(w) {this._w = w;}
+
+            get h() {return this._h;}
+
+             /** 
+             * Height of Rectangle may be set by a number
+             * @param {number} h
+             */
+            set h(h) {this._h = h;}
+
+            draw() { // override
+                console.log('Draw Rectangle!');
+            }
+            area() {
+                return this._w * this._h;
+            }
+        }
+
+        const point = new Point(3, 5);
+        console.log(point); 
+        console.log("\n");
+
+        const shape = new Shape(point);
+        console.log(shape);
+        shape.draw();
+        console.log("\n");
+
+        const circle = new Circle(new Point(1, 2), 3);
+        console.log(circle);
+        console.log(circle.pc);
+        circle.draw();
+        console.log(circle.area());
+        console.log("\n");
+        
+        const triangle = new Triangle(new Point(5, 6), 3, 5);
+        console.log(triangle);
+        console.log(triangle.pc);
+        triangle.draw();
+        console.log(triangle.area());
+        console.log("\n");
+
+        const rectangle = new Rectangle(new Point(10, 2), 3, 5);
+        console.log(rectangle);
+        console.log(rectangle.pc);
+        triangle.draw();
+        console.log(rectangle.area());
+        console.log("\n");
+
+
+       
+
+    </script>
+</body>
+</html>

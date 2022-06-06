@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            BOM (Browser Object Model, 브라우저 객체 모델)
+            : 브라우저 내장 객체 중 최상위 객체 (window)
+            : 브라우저의 모든 객체, 함수, 변수는 window 객체에 속함
+            : window. 생략 가능!
+        
+        */
+
+        // window 속성 확인
+        for(const win in window) {
+            console.log("=======================");
+            console.log(win);
+            console.log(typeof(win)); // string
+            console.log(window[win]); // object["property"]
+            console.log(window.win); // object.property
+            console.log("=======================");
+        }
+        
+        // window 객체 생성
+        // window.open(url, name, spec)
+        // name: _blank, _self, name (임의의 이름)
+        // spec: height, width, left, top........
+        const newWindow = window.open("https://www.naver.com", "_blank", "width=400, height=300");
+        newWindow.close(); // 객체 소멸
+        //////////////////////////////////////////////////////////////
+        
+        // (window.)screen: 사용자의 디스플레이 화면에 대한 정보 저장 객체
+        console.log(screen.height); // 1080
+        console.log(screen.width); // 1920
+
+        // 운영체제의 작업 표시줄 같은 공간 제외
+        console.log(screen.availHeight); // 1040
+        console.log(screen.availWidth); // 1920
+        //////////////////////////////////////////////////////////////
+
+        // (window.)history: 브라우저의 기록 객체
+        // history.go(value): 
+        /* 
+            value:
+            -1: 이전 페이지로 이동
+            -2: 전전 페이지로 이동
+            1: 다음 페이지로 이동
+            2: 다다음 페이지로 이동
+        */
+        // history.forward(): 웹 브라우저에서 상단 > (앞으로 가기)
+        // history.back(): 웹 브라우저에서 상단 < (뒤로 가기)
+        //////////////////////////////////////////////////////////////
+
+        // (window.)location: 현재 페이지의 주소 (URL)을 얻기 위한 객체
+        // location.href: 현재 페이지의 href (URL) 반환
+        // location.hostname: 웹 페이지의 도메인 이름 반환
+        // location.pathname: 웹 페이지의 경로/파일 이름 반환
+        // location.protocol: 웹 프로토콜 반환 (http, https (secure))
+        // location.assign(url): 새로운 문서 로드 (history 남김)
+        // location.replace(url): 새로운 문서 로드 (history 남기지 않고)
+
+        // Q1. window 객체 생성 (브라우저의 중앙에서 띄우고 싶은 경우)
+        function openWindowAtCenter(url, width, height) {
+            const top = (screen.availHeight - height) / 2;
+            const left = (screen.availWidth - width) / 2;
+            const spec = "width=" + width + ", height=" + height + ", top=" + top + ", left=" + left;
+            return window.open(url, "_blank", spec); 
+        }
+        
+        const newWindow2 = openWindowAtCenter("https://www.naver.com", 400, 300);
+
+
+
+
+    </script>
+</body>
+</html>

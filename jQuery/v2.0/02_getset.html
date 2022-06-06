@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- online cdn (contents delivery network)-->
+</head>
+<body>
+    <h1>jQuery getter/setter</h1>
+    <p id="pa">we are studying <b>jQuery</b></p>
+    <p id="pb" style="display: inline;">Name: </p>
+    <input type="text" id="test" value="Mickey Mouse">
+    
+    <br/>
+    <br/>
+    <button type="button" id="btn1">Show HTML</button>
+    <button type="button" id="btn2">Show Text</button>
+    <button id="btn3">Show Value</button>
+    <br/>
+    <button id="btn4">Set HTML</button>
+    <button id="btn5">Set Text</button>
+    <button id="btn6">Set Value</button>
+
+    <script>
+        // content get, set
+        // text() (getter) / text("text") (setter)
+        // html() (getter) / html("<p>text</p>") (setter)
+        // val() (getter) / val(value) (setter)
+
+        $(() => {
+            // Q1. #btn1을 click했을 때 #pa의 html() get
+            $("#btn1").click(() => {
+                const html = $("#pa").html();
+                console.log(html);
+            });
+
+            // Q2. #btn2을 click했을 때 #pb의 text() get
+            $("#btn2").click(() => {
+                const text = $("#pb").text();
+                console.log(text);
+            });
+
+            // Q3. #btn3을 click했을 때 #test의 val() get
+            $("#btn3").click(() => {
+                const value = $("#test").val();
+                console.log(value);
+            });
+
+            // Q4. #btn4를 click했을 때 #pa의 html를 <b>Hello World</b>로 set
+            $("#btn4").click(() => {
+                $("#pa").html("<b>Hello World<b>");
+            });
+
+            // Q5. #btn5를 click했을 때 #pb의 text를 "New Name: "로 set
+            $("#btn5").click(() => {
+                $("#pb").text("New Name: ");
+            });
+
+            // Q6. #btn6를 click했을 때 #test의 val를 Sally로 set
+            $("#btn6").click(() => {
+                $("#test").val("Sally");
+            });
+        });
+    </script>
+</body>
+</html>

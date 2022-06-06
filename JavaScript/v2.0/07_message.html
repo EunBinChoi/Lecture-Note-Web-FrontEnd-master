@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            대화상자
+
+            1) alert("경고 메세지")
+            2) confirm("확인 메세지")
+                - 확인: true
+                - 취소: false
+            3) prompt("사용자 입력 유도 메시지", "기본 입력값")
+        */
+
+        const msg1 = alert("warning!");
+        console.log(msg1); // undefined
+        console.log(typeof(msg1)); // undefined
+
+        const msg2 = confirm("continue?");
+        console.log(msg2); // true or false
+        console.log(typeof(msg2)); // boolean
+        
+        // boolean -> string
+        console.log(typeof(msg2 + ""));
+        console.log(typeof(String(msg2)));
+
+        const msg3 = prompt('number ?', 1);
+        // prompt 함수 반환값은 항상 string이다!
+        // 디폴트 값으로 아무리 number으로 선정해도 string으로 들어옴
+        console.log(msg3);
+        console.log(typeof(msg3));
+
+        // Q1. string이 아니라 number로 입력받는 방법?
+        // parseInt(), Number()
+
+        const msg4 = parseInt(prompt('number ?', 1));
+        console.log(msg4);
+        console.log(typeof(msg4));
+
+        const msg5 = Number(prompt('number ?', 1));
+        console.log(msg5);
+        console.log(typeof(msg5));
+    </script>
+
+    <!-- // Q2. 사용자가 입력한 데이터를 DOM 요소로 출력하고 싶을 때  -->
+    <!-- // console.log() (X)  -->
+    <p>answer: <span id="answer"></span></p>
+    <p>pppppp</p>
+
+    <script>
+        const msg6 = prompt('input your answer? ', 100);
+        document.getElementById('answer').innerHTML = msg6;
+        document.getElementsByTagName('p')[0].style.fontSize = '50px';
+        document.getElementById('answer').style.fontWeight = 'bold';
+
+        // Q3. pppppp display:none (요소 안보이게 만듦)
+        document.getElementsByTagName('p')[1].style.display = 'none'; 
+    </script>
+
+
+</body>
+</html>

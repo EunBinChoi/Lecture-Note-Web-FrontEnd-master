@@ -1,0 +1,152 @@
+
+<!-- HTML (HyperText Markup Language) 
+    HyperText: 페이지와 페이지를 연결해주는 링크
+    Markup: 표시한다
+    => 웹 브라우저의 내용을 표시하기 위한 언어
+-->
+
+<!DOCTYPE html> 
+<!-- html5 버전으로 시작하겠다! -->
+<html lang="ko">
+<!-- html 언어 
+"en" - 영어
+"ko" - 한국어
+-->
+<!-- head: 작성자나 문서 요약/설명 같은 데이터 포함 
+    (메타 데이터) 
+    보통 head 내용은 페이지에 표시되지 않음
+-->
+<head>
+    <meta charset="UTF-8"> 
+    <!-- html 문서의 문자 인코딩 방식
+    (보통은 UTF-8) -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- http-equiv: IE 버전이 달라도 호환 가능하게 함 
+    오래된 브라우저에서 정상적으로 출력되지 않는 이슈 해결
+    -->
+    <!-- content: IE 브라우저에서 가장 최신 모드 표준으로
+    선택하는 문서 모드 -->
+    <meta name="viewport" content="width=device-width, 
+    initial-scale=1.0">
+    <!-- name="viewport": 보임 창 (화면 상의 표시 영역) 
+    모바일 브라우저에서 크기 조절을 위해 만듦 -->
+    <title>Document</title>
+</head>
+
+    <h1>HTML 공부 시작!</h1> 
+    <h2>HTML 공부 시작!</h2>
+    <h3>HTML 공부 시작!</h3>
+    <h4>HTML 공부 시작!</h4>
+    <h5>HTML 공부 시작!</h5>
+    <h6>HTML 공부 시작!</h6>     
+    <!-- 본문의 제목 -->
+    <p>HTML</p>
+    <p>CSS</p>
+    <p>JavaScript</p>
+    <!-- 본문의 단락 (paragraph) -->
+    <b style="color:blue;font-size:200%;">글씨체 굵게</b>
+    <!-- bold체 (글씨체 굵게) -->
+    <i style="color:darkred;">글씨체 기울어서</i>
+    <!-- 이텔릭체 (글씨체 기울어서) -->
+    
+    <!-- style="background-color" : 배경색 -->
+    <!-- style="color" : 글씨색 -->
+    <!-- style="font-size": 글씨체 크기 -->
+    <!-- style="text-align": 글씨 정렬 -->
+    <p style="font-size:300%;">글씨 크게</p>
+    <h1 style="text-align:center;">제목 표시 정렬</h1>
+    
+    <!-- style="font-family": 글씨체 지정 -->
+    <p style="font-family:'Times New Roman', Times, serif;">
+        글씨체 바꾸기 font changed</p>
+
+    <!-- 하이퍼링크 <a href="url"> -->
+    <a href="https://www.google.com/">구글 링크</a>
+
+    <!-- 이미지 삽입 
+        <img src="image.jpg" alt="대신할 텍스트 지정"-->
+    <img src="dog.jpg" alt="Dog" height="280" width="250">
+
+    <!-- 테이블 삽입 <table>
+    <tr>: 행 추가 (table row)
+    <th>: 열 추가 (bold, centered (중간 정렬))
+    <td>: 테이블에 데이터 추가 (left-aligned (왼쪽 정렬))
+    -->
+
+    <table>
+        <tr>
+            <th>EMPNO</th>
+            <th>ENAME</th>
+            <th>SAL</th>
+        </tr>
+        <tr>
+            <td>1111</td>
+            <td>Smith</td>
+            <td>800</td>
+        </tr>
+        <tr>
+            <td>2222</td>
+            <td>Jones</td>
+            <td>1300</td>
+        </tr>
+        <tr>
+            <td>3333</td>
+            <td>James</td>
+            <td>1500</td>
+        </tr>
+    </table>
+
+    <!-- list 
+        순서가 있는 경우 (ordered list, ol), 
+        순서가 없는 경우 (unordered list, ul) 
+        설명 리스트 (description list, dl)
+    -->
+    
+    <!-- ordered list <ol> -->
+    <ol type="1">
+        <li>딸기</li>
+        <li>수박</li>
+        <li>바나나</li>
+    </ol>
+
+    <ol type="A">
+        <li>딸기</li>
+        <li>수박</li>
+        <li>바나나</li>
+    </ol>
+
+    <ol type="a">
+        <li>딸기</li>
+        <li>수박</li>
+        <li>바나나</li>
+    </ol>
+
+    <!-- unordered list <ul> -->
+    <ul type="square">
+        <li>딸기</li>
+        <li>수박</li>
+        <li>바나나</li>
+    </ul>
+
+    <ul type="circle">
+        <li>딸기</li>
+        <li>수박</li>
+        <li>바나나</li>
+    </ul>
+
+    <ul type="disc">
+        <li>딸기</li>
+        <li>수박</li>
+        <li>바나나</li>
+    </ul>
+
+    <!-- defined list <dl> -->
+    <dl>
+        <dt>단어이름</dt> 
+        <!-- dt: 단어 정의 -->
+        <dd>- 단어 설명</dd>
+        <!-- dd: 단어에 대한 설명 -->
+    </dl>
+</body>
+</html>
+

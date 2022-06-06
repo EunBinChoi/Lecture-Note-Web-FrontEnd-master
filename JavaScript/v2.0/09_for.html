@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 배열 생성
+        // 배열 (정적 할당) vs Collection (동적 할당) (javascript, python)
+        // 데이터 타입도 동일하지 않아도 상관 없음
+        const arr = [1, 1.5, 'hello', function(){console.log('function!')}];
+
+        // 1. for문
+        let i = 0; // no error
+        for(let i = 0; i < arr.length; i++){
+            console.log(i);
+            console.log(typeof(i));
+            // console.log(arr[i]);
+            // console.log(typeof(arr[i]));
+        }
+
+        // 2. for-in문
+        // "배열 원소"가 담기는 게 아니라 "배열 인덱스 추출"
+        const j = 0; // no error
+        for(const j in arr) { 
+            // console.log(i);
+            // console.log(typeof(i));
+            console.log(arr[j]);
+        }
+
+        // 3. for-of문
+        // "배열 원소"가 추출
+        for(const element of arr) {
+            console.log(element);
+        }
+
+        // 4. foreach문
+        // array 객체의 함수
+        arr.forEach((element) => {console.log(element)});
+
+        /////////////////////////////////////////////////////////////////////
+
+        document.write("<h2>Question One.</h2>");
+        // Q1. 구구단 출력 (table)
+        // 가로줄 출력
+        let gugudan = "<table border='1'; style=border-collapse:collapse;>";
+
+        for (let n = 2; n <= 9; n++) {
+            gugudan += "<tr>"; 
+            // 행 추가
+            for (let mul = 1; mul <= 9; mul++) {
+                gugudan += "<td style=padding:10px>" + n + " x " + mul + " = " 
+                    + "<span style=font-weight:bold>" + (n * mul) + "</span>" + "</td>";
+            }
+            gugudan += "</tr>";
+        }
+        gugudan += "</table>";
+        document.write(gugudan);
+
+        document.write("<br/>");
+
+        // 세로줄 출력
+        gugudan = "<table border='1' style=border-collapse:collapse;>";
+
+        for (let mul = 1; mul <= 9; mul++) {
+            gugudan += "<tr>";
+            for (let n = 2; n <= 9; n++) {
+                gugudan += "<td style=padding:10px>" + n + " x " + mul + " = " 
+                    + "<span style=font-weight:bold>" + (n * mul) + "</span>" + "</td>";
+            }
+            gugudan += "</tr>";
+        }
+        gugudan += "</table>";
+        document.write(gugudan);
+
+        /////////////////////////////////////////////////////////////////////
+        // while, do-while, break, continue
+        // 초기값, 조건식, 증감문
+
+        // let i = 0;
+        // while (i < 10) {
+        //     console.log(i);
+        //     i ++;
+        // }
+
+        // let j = 0;
+        // do {
+        //     console.log(j);
+        //     j++;
+        // } while(j < 0);
+
+        document.write("<br/>");
+        document.write("<h2>Question Two.</h2>");
+        
+        // // Q2. 
+        let text = "";
+        for(let i = 0; i < 10; i ++){
+            text += "number: " + i + "<br/>";
+            if(i == 3) {break;}
+        }
+        document.write(text);
+        document.write("<br/>");
+
+        text = "";
+        for(let i = 0; i < 10; i ++){
+            text += "number: " + i + "<br/>";
+            if(i % 3 == 0) {continue;} // 의미없는 continue;
+        }
+        document.write(text);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+#box {
+    width: 50px;
+    height: 50px;
+    background-color: gold;
+
+    /* transform된 결과 (정적) */
+    /* transform: rotate(10deg); */
+    /* transform: translate(100px, 0px); */
+    /* 가로 방향: 100px
+       세로 방향: 0px */
+
+    /* transform: scale(3, 3); */
+
+    
+}
+
+#moving-box {
+    width: 50px;
+    height: 50px;
+    background-color: gold;
+
+    /* transition (동적) */
+    /* transition: width 5s ease 1s; */
+    /* 5s: 5초 동안 transition
+       1s: 1초 후에 transition이 시작
+    */
+
+    /* ease: 기본값, 천천히 시작하고 빨라졌다가 마지막에는 다시 느려짐
+       ease-in: transition이 천천히 시작
+       ease-out: transition이 천천히 끝남
+       ease-in-out: transition이 천천히 시작하고 천천히 끝남
+    */
+
+    transition: transform 3s;
+}
+
+#moving-box:hover {
+    /* width: 100px; */
+    transform: rotate(360deg) scale(2);
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            배열 (array)
+            : []
+            : 원소의 데이터 타입이 동일하지 않아도 됨! (객체 타입으로 되어있기 때문에) => (비추천!) 
+            ex) [1, '1', true, function() {....}]
+        */
+
+        const arr1 = [1, 2, 3, 4, 5]; // 사용!
+        const arr2 = new Array(1, 2, 3, 4, 5);
+        console.log(arr1);
+        console.log(typeof (arr1)); // object
+
+        // arr1 index: 0 ~ 4
+        /////////////////////////////////////////////////////////
+        arr1[5] = 6; // add element at 5 index (다른 언어에서는 error)
+        console.log(arr1);
+
+        // arr1에서 6번 인덱스에 hole (구멍)이 생김! (6번 인덱스에 아무런 값이 없음!)
+        // => 희소 배열: 배열에 hole에 존재하는 배열 (연속적이지 않은 배열)
+
+        arr1[7] = 7;
+        console.log(arr1);
+        console.log(arr1.length); // 8, (hole의 길이도 포함)
+        console.log(arr1[6]); // print hole (undefined)
+
+        // element add (push(), unshift())
+        arr1.push(8, 9, 10); // 배열의 마지막에 값 8, 9, 10 추가
+        arr1.unshift(0); // 배열의 첫번째에 값 0 추가
+        console.log(arr1);
+
+        // element remove (pop(), shift())
+        arr1.pop(); // 배열의 마지막 값 삭제
+        arr1.shift(); // 배열의 첫번째 값 삭제
+        console.log(arr1);
+
+        // push, pop: back
+        // vs unshift, shift: front (시간 오래 걸림)
+
+        // 배열 원소 부분적 삭제
+        // arr1.splice(1, 1); // 1번 인덱스부터 1개 삭제
+        // arr1.splice(1); // 1번 인덱스부터 다 삭제
+        // arr1.splice(1, 1, 3, 4); // 1번 인덱스부터 1개 삭제하고 그 자리에 3, 4 추가
+        console.log(arr1);
+
+        // 배열 결합
+        const fruit1 = ['apple', 'banana'];
+        const fruit2 = ['lemon', 'kiwi'];
+        const newFruits = fruit1.concat(fruit2);
+        console.log(fruit1);
+        console.log(fruit2);
+        console.log(newFruits);
+
+        // indexOf: 앞에서부터 일치하는 요소를 찾아서 인덱스 반환
+        console.log(newFruits.indexOf('banana')); // 1
+        console.log(newFruits.indexOf('watermelon')); // -1 (원소를 찾지 못할 경우)
+
+        // lastIndexOf: 뒤에서부터 일치하는 요소를 찾아서 인덱스 반환
+        const fruit3 = ['apple', 'apple', 'apple'];
+        console.log(fruit3.indexOf('apple')); // 0
+        console.log(fruit3.lastIndexOf('apple')); // 2
+
+        // includes: 원소가 있는지 없는지 확인 (true, false)
+        console.log(fruit3.includes('watermelon')); // false
+        console.log(fruit3.includes('apple')); // true
+
+        /////////////////////////////////////////////////////////////
+        // join (array -> string)
+        const fruit4 = ['apple', 'banana', 'orange'];
+        const result4 = fruit4.join(); // default: ','
+        console.log(result4); // "apple,banana,orange"
+
+        // split (string -> array)
+        const fruit5 = result4.split(); // 하나의 문자열을 요소로 갖고 있는 array 반환 (length: 1)
+        console.log(fruit5);
+
+        // reverse: 원본 자체를 reverse() (reverse()된 배열을 반환)
+        const arr3 = [1, 2, 3, 4];
+        const res3 = arr3.reverse();
+        console.log(arr3);
+        console.log(res3);
+
+
+        // Q1. arr4에서 [1, 2] 삭제!
+        const arr4 = [1, 2, 3, 4, 5];
+        arr4.splice(0, 2);
+        console.log(arr4);
+
+        // Q2. fruit6를 리스트로 변경
+        const fruit6 = "123,456,789";
+        const res6 = fruit6.split(',');
+        console.log(res6);
+
+        // Q3. res6를 다시 문자열로 변경 ("123|456|789") 
+        const fruit7 = res6.join('|');
+        console.log(fruit7);
+
+        // Q4. 아래의 리스트를 unordered list (ul) 태그를 이용해서 DOM 요소로 출력
+        const fruit8 = ['🍋', '🍌', '🍎', '🥝', '🍉'];
+        let fruitsList = '<ul>';
+
+        for (let i = 0; i < fruit8.length; i++) {
+            fruitsList += '<li>';
+            fruitsList += fruit8[i];
+            fruitsList += '</li>';
+        }
+        fruitsList += '</ul>';
+        document.write(fruitsList);
+
+        // Q5. 
+        const fruit9 = ['🍋', '🍋', '🍋'];
+        fruit9[4] = fruit8;
+        // fruit9은 3번에 hole이 존재하는 희소 배열!
+
+        console.log(fruit9);
+        // ['🍋', '🍋', '🍋', undefined, ['🍋', '🍌', '🍎', '🥝', '🍉']];
+
+        function indexOf2DArray(arr, element) {
+            for(let i = 0; i < arr.length; i++) {
+                if(Array.isArray(arr[i])) {
+                    for(let j = 0; j < arr[i].length; j++) {
+                        if(arr[i][j] == element) {
+                            return [i, j];
+                        }
+                    }
+                }
+            }     
+            return [-1, -1];       
+        }
+
+        // 2d, 3d, 4d ... (recursive function)
+        function indexOfNDArrayRecursive(arr, element) {
+            let index = [];
+            for(let i = 0; i < arr.length; i++) {
+                if(Array.isArray(arr[i])) {
+                    // indexOfNDArrayRecursive
+                    index.push(i);
+                    index = extendsArray(index, indexOfNDArrayRecursive(arr[i], element));
+                }
+                if(arr[i] == element) {
+                    index.push(i);
+                }
+            }
+            return index;
+        }
+
+        function extendsArray(returnsArr, returnsRecur) {
+            for(let i = 0; i < returnsRecur.length; i++) {
+                returnsArr.push(returnsRecur[i]);
+            }
+            return returnsArr;
+        }
+
+        // indexOfNDArrayRecursive test
+        const arr = [1, 2, 3, [4, 5, [7, 8, 9]]]
+        const find = 9;
+        const returns = indexOfNDArrayRecursive(arr, find);
+        console.log(returns);
+        console.log(arr[returns[0]][returns[1]][returns[2]]);
+
+    
+
+        // Q5-1. 5번 코드에서 '🍎'을 출력
+        console.log(fruit9[4][2]);
+        
+        // using indexOf2DArray() (if the index of 🍎 is unknown)
+        const indices = indexOfNDArrayRecursive(fruit9, '🍎');
+        const i = indices[0];
+        const j = indices[1];
+        console.log(i, j);
+        console.log(fruit9[i][j]);
+
+        // Q5-2. 5번 코드에서 ['🍎', '🍉']을 출력
+        console.log(fruit9[4][2].concat(fruit9[4][4])); // string + string
+        console.log(fruit9[4][2].concat([fruit9[4][4]])); 
+        // string + array => string + string  (string's concat())
+        console.log([fruit9[4][2]].concat(fruit9[4][4])); 
+        // array + string => array + array (array's concat())
+        console.log([fruit9[4][2]].concat([fruit9[4][4]])); // array + array
+
+        // Q5-3. fruit9에서 가장 앞의 원소 삭제
+        fruit9.shift();
+        console.log(fruit9);
+
+        // Q5-4. fruit9에서 마지막 원소 (리스트) 삭제
+        fruit9.pop();
+        console.log(fruit9); // hole이 남아있음!
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

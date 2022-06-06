@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1"><div class="title">Your Grade:</div><div id="grade"> </div></div>
+    <div id="div2"><div class="title">Your GPA:</div><div id="answer"> </div></div>
+
+    <script>
+        // .title의 width 사이즈 동일하게 조정
+        document.getElementById('div1').style.display = 'flex';
+        document.getElementById('div2').style.display = 'flex';
+       
+        const elements = document.getElementsByClassName('title');
+        for(let i = 0; i < elements.length; i++) {
+            elements[i].style.width = '100px';
+        }
+
+        const grade = parseInt(prompt('grade? ', 100));
+        document.getElementById('grade').innerHTML += grade;
+        document.getElementById('answer').
+        innerHTML += byArrayGPA(grade);
+
+        function GPA(grade) {
+            if (grade > 90) {return 'A';}
+            else if (grade > 80) {return 'B';}
+            else if (grade > 70) {return 'C';}
+            else if (grade > 60) {return 'D';}
+            else {return 'F';}
+        }
+
+        function byArrayGPA(grade) {
+            const grades = [90, 80, 70, 60, -1];
+            const gpa = ['A', 'B', 'C', 'D', 'F'];
+
+            for(let i = 0; i < grades.length; i++) {
+                if(grade > grades[i]) return gpa[i];
+            }
+        }
+
+        function byMapGPA(grade) {  
+            const map = new Map([[90, 'A'], [80, 'B'], [70, 'C'], [60, 'D'], [-1, 'F']]);
+
+            for(const [key, value] of map) { 
+	            if(grade > key) return value;
+            }
+        }
+        ///////////////////////////////////////////////
+
+        // switch
+        const date = new Date().getDay(); // 오늘 날짜에 해당하는 요일값 (0 ~ 6)
+        console.log(date);
+
+        let dayStr;
+        switch(date) {
+            case 0:
+                dayStr = "Sun";
+                break;
+            case 1:
+                dayStr = "Mon";
+                break;
+            case 2:
+                dayStr = "Tue";
+                break;
+            case 3:
+                dayStr = "Wed";
+                break;
+            case 4:
+                dayStr = "Thur";
+                break;
+            case 5:
+                dayStr = "Fri";
+                break;
+            case 6:
+                dayStr = "Sat";
+                break;    
+            default:
+                dayStr = "Error!";
+        }
+        console.log(dayStr);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            자료형 (data type)과 변수 (variables)
+
+            자료형
+            : 숫자, 문자열 ('', ""), 논리형, 
+              
+            null (값이 없음) 
+              : 명시적으로 값이 비어있음
+              : 아무것도 참조하지 않고 있다는 의미가 담겨 있음
+              : 객체를 담을 변수를 초기화할 때 주로 사용
+              : 데이터 타입이자 값을 나타냄
+              : 값은 값이지만 값으로써 의미없는 특별한 값이 등록되어 있음
+              
+            undefined (값이 없음)
+              : 기본적으로 값이 할당되지 않은 변수
+              : 변수 자체 값 또한 undefined
+              : 데이터 타입이자 값을 나타냄
+              : 값은 값이지만 등록 되어있지 않기 떄문에 초기화 정의되지 않은 것
+              : => 정의되지 않은 것 
+              (초기화되지 않거나 존재하지 않은 객체에 접근하려고 할 때)
+            
+
+            변수 선언: 자료형 명시할 필요 없음 (데이터 할당시에 결정)
+            (ES5)
+            : var: 변수 저장
+            - 중복 선언 가능
+                var a = 10;
+                var a = 20;
+            
+
+            (ES6)
+            : let: 변수 저장
+            : const: 상수 저장
+            - 중복 선언 불가능
+                let a = 10;
+                let a = 20; (X) already declared
+
+                const a = 10;
+                const a = 20; (X) already declared
+
+
+            var, let: 값의 재할당 가능 (변수)
+            var a = 10;
+            a = 20;
+
+            let b = 20;
+            b = 30;
+
+            const: 값의 재할당 불가능 (상수)
+            const a = 20;
+            a = 30; (X) assign to constant variable
+
+            const > let > var
+
+            변수명 규칙
+            - 문자+숫자+특수문자(_, $) 조합
+            - 첫글자 숫자 X
+            - 공백문자 X
+        
+        */
+
+        // hositing
+        console.log(a); // undefined
+        console.log(b); // 초기화 X
+        var a = null;
+        let b = null;
+        
+
+        // 자료형 
+        console.log(typeof(null));
+        console.log(typeof(undefined));
+
+        let test = 3;
+        console.log(typeof(test));
+
+        test = "abc";
+        console.log(typeof(test));
+
+        test = false;
+        console.log(typeof(test));
+
+        test = [1, 2, 3];
+        console.log(typeof(test));
+
+        function abc(){
+            console.log("hello");
+        }
+        console.log(typeof(abc)); // 함수 객체 전달
+        abc(); // 함수 호출
+
+        // undefined vs null
+        let undefinedLet;
+        let nullLet = null;
+        console.log(undefinedLet == nullLet); // true
+        console.log(undefinedLet === nullLet); // false
+
+
+        // 변수
+        var a;  // 변수 선언
+        document.write(a + " ");
+        document.write(typeof(a)); // 자료형 확인
+        document.write('<br/>');
+        
+        // 변수 초기화
+        // 1. 객체: null
+        // 2. 숫자: 0
+        // 3. 문자열: null
+        // 4. 논리형: false
+        // 데이터 초기화되지 않으면 undefined
+
+        a = null; // null값
+        document.write(a + " ");
+        document.write(typeof(a)); // 자료형 확인 (null값도 객체 (object))
+        document.write('<br/>');
+
+        a = ''; // 빈 문자열
+        document.write(a + " ");
+        document.write(typeof(a)); // 자료형 확인
+        document.write('<br/>');
+        
+        var aa = 1;
+        let bb = 2;
+        document.write(aa + '<br/>');
+        document.write(bb + '<br/>');
+
+        function myfunc(){
+            // var aa = 3;
+            let bb = 4;
+            document.write(aa);
+            document.write(bb);
+        }
+        myfunc();
+
+    </script>
+</body>
+</html>

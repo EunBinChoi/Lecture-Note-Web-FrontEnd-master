@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = true;
+        let b = 100; // int, double --> number
+        let c = "hello"; // char, string --> string
+        console.log(typeof(a));
+        console.log(a);
+        console.log(typeof(b));
+        console.log(b);
+        console.log(typeof(c));
+        console.log(c);
+
+        // number로 변환: Number() (생성자)
+        console.log(Number(a));
+        console.log(Number(b));
+        console.log(Number(c)); // 문자열은 숫자로 변경 불가능 (NaN, not a number)
+
+        // string으로 변환: String()
+        console.log(String(a));
+        console.log(String(b));
+        console.log(String(c));
+
+        // boolean으로 변환: Boolean()
+        // 값이 할당되어있거나 1: true
+        // '', null, undefined, 0: false
+        console.log(Boolean(a));
+        console.log(Boolean(b));
+        console.log(Boolean(c));
+        console.log(Boolean('')); // false
+        console.log(Boolean(undefined)); // false
+        console.log(Boolean(null)); // false
+        console.log(Boolean(0)); // false
+        console.log(Boolean()); // false
+        console.log(Boolean(' ')); // true
+        console.log(Boolean('\t')); // true
+        console.log(Boolean('\n')); // true
+    </script>
+</body>
+</html>

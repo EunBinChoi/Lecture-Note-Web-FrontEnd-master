@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>EVENT</h2>
+    
+    <h3>=================== mouse event ====================</h3>
+    <h3 id="click">mouse</h3>
+
+    <h3>=================== keyboard event ====================</h3>
+    <h3>keyboard</h3>
+    <form action="#"><input type="text" id="keyboard"></form>
+    <div id="keyboard-result"></div>
+
+    <h3>=================== focus/blur event ====================</h3>
+    <h3>focus / blur</h3>
+    <form action="#"><input type="text" id="focus-blur"></form>
+    <div id="focus-blur-result"></div>
+    
+    <script>
+        // function onclickEvent(id) { id.innerHTML = "click event!"; }
+        // function ondblclickEvent(id) { id.innerHTML = "double click event!"; }
+        // function onmouseoverEvent(id) { id.innerHTML = "mouse over event!"; }
+
+        // // event.keyCode: ascii code (한국어 지원 X)
+        // function onkeydownEvent(id) { id.innerHTML = event.keyCode + " key down event!"; }
+        // function onkeyupEvent(id) { id.innerHTML = event.keyCode + " key up event!"; }
+        // function onkeypressEvent(id) { id.innerHTML = event.keyCode + " key press event!"; }
+
+        // function onfocusEvent(id) { id.innerHTML = "focus on event!"; }
+        // function onblurEvent(id) { id.innerHTML = "blur event!"; }
+
+        /////////////////////////////////////////////////////////////////
+        // Q1. 현재 창의 F5 (keycode: 116), backspace (keycode: 8) 불가능하도록 만듦 (alert())
+        // function blockEvents(event) {
+        //     whichEvent(event, 116);
+        //     whichEvent(event, 8);
+        // }
+        function whichEvent(event, eventCode) {
+            for(let i = 0; i < eventCode.length; i++) {
+                if(event.keyCode == eventCode[i]) {
+                    alert("[WARNING] BLOCK EVENT (cause: event.keyCode " + eventCode[i] + ")");
+                    // event.preventDefault();
+                    event.returnValue = false;
+                }
+            }
+        }
+
+        /////////////////////////////////////////////////////////////////
+        // script code를 이용해서 이벤트 등록
+        window.onload = () => {
+            const clickElement = document.getElementById('click');
+            const clickEventHandler = () => {clickElement.innerHTML = "click event!";}
+            const dblclickEventHandler = () => {clickElement.innerHTML = "double click event!";}
+            const mouseoverEventHandler = () => {clickElement.innerHTML = "mouse over event!";}
+            clickElement.addEventListener("click", clickEventHandler);
+            clickElement.addEventListener("dblclick",  dblclickEventHandler);
+            clickElement.addEventListener("mouseover", mouseoverEventHandler);
+
+            const keyboardElement = document.getElementById('keyboard');
+            const keyboardResElement = document.getElementById("keyboard-result");
+            const keydownEventHandler = () => {keyboardResElement.innerHTML = event.keyCode + " key down event!";}
+            const keyupEventHandler = () => {keyboardResElement.innerHTML = event.keyCode + " key up event!";}
+            const keypressEventHandler = () => {keyboardResElement.innerHTML = event.keyCode + " key press event!";}
+            keyboardElement.addEventListener("keydown", keydownEventHandler);
+            keyboardElement.addEventListener("keyup",   keyupEventHandler);
+            keyboardElement.addEventListener("keypress", keypressEventHandler);
+            
+            const focusBlurElement = document.getElementById('focus-blur');
+            const focusBlurResElement = document.getElementById("focus-blur-result");
+            const focusEventHandler = () => {focusBlurResElement.innerHTML = "focus event!"}
+            const blurEventHandler = () => {focusBlurResElement.innerHTML = "blur event!"}
+            focusBlurElement.addEventListener("focus", focusEventHandler);
+            focusBlurElement.addEventListener("blur", blurEventHandler);
+
+            
+            // 이벤트 제거 (익명함수 사용 X => 함수의 주소값 확인하기 때문)
+            // clickElement.removeEventListener("click", clickEventHandler);
+        
+            const blockEventHandler = () => {whichEvent(event, [116, 8]);}
+            window.addEventListener('keydown', blockEventHandler);
+
+            /////////////////////////////////////////////////////////////////
+            // Q2. 오른쪽 마우스 클릭 이벤트를 불가능하도록 만듦 (alert())
+            window.addEventListener('contextmenu', (event) => {
+                alert("[WARNING] BLOCK EVENT (cause: right click event)");
+                // event.preventDefault();
+                event.returnValue = false;
+            });
+        }
+
+       
+
+        
+        
+    </script>
+</body>
+</html>
