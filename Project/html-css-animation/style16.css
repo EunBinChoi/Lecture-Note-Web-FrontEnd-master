@@ -1,0 +1,711 @@
+@charset "utf-8";
+
+body {
+  margin: 0px;
+}
+
+header {
+  display: block;
+  height: 120px;
+  position: relative;
+}
+
+.menuwrap {
+  height: 120px;
+  z-index: 999;
+  position: fixed;
+  background: #f6f5ef;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 2px solid #000;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.menuwrap_inner {
+  position: relative;
+  margin: 0 auto;
+  width: 1100px;
+  height: 100%;
+}
+
+.logo {
+  background-image: url("https://www.starbucks.co.kr/common/img/common/logo.png");
+  height: 75px;
+  width: 75px;
+  position: absolute;
+  top: 22px;
+  left: 20px;
+}
+
+.topnav {
+  width: 464px;
+  height: 20px;
+  position: absolute;
+  top: 15px;
+  right: 93px;
+  margin: 0;
+  padding: 0;
+}
+
+.topnav > ul {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(212, 212, 212);
+  font-size: 15px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.topnav > ul > li {
+  text-decoration: none;
+  list-style: none;
+  color: #555;
+  font: normal 13px Avenir, Arial, georgia;
+}
+
+.topnav > ul > li > a {
+  text-decoration: none;
+  color: #555;
+}
+
+.bottomnav {
+  height: 66px;
+  width: 1100px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+}
+
+.bottomnav > ul {
+  float: right;
+  display: flex;
+  justify-content: space-between;
+  width: 750px;
+  margin: 0;
+  padding: 0;
+}
+
+.bottomnav > ul > li {
+  list-style: none;
+  color: #333;
+  font: normal 13px Avenir, Arial, georgia;
+  text-align: center;
+}
+.bottomnav > ul > li > a {
+  color: #333;
+  text-decoration: none;
+}
+
+#main {
+  height: 646px;
+  background-image: url("https://image.istarbucks.co.kr/upload/common/img/main/2022/2022_NewYear_main_bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main_inner {
+  height: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.floating {
+  position: fixed;
+  right: 7%;
+  top: 154px;
+  width: 140px;
+  /* right: auto; */
+  z-index: 999;
+  margin-left: 485px;
+  left: auto;
+}
+
+.main_top {
+  padding-top: 5.1%;
+  padding-left: 2.8%;
+  animation: opacity-in 1s;
+}
+
+.btn {
+  width: 125px;
+  height: 38px;
+  position: absolute;
+  margin-top: 40px;
+  left: 10.3%;
+  line-height: 1;
+  animation: opacity-in 14s;
+}
+
+.btn > a {
+  color: #4f7161;
+  border: 2px solid #4f7161;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  text-decoration: none;
+  line-height: 34px;
+  vertical-align: baseline;
+}
+
+.main_img1 {
+  position: absolute;
+  left: 2%;
+  bottom: 14.3%;
+  animation: opacity-in 4s;
+}
+
+.main_img2 {
+  position: absolute;
+  bottom: 32.1%;
+  right: 20.7%;
+  max-width: 100%;
+  animation: opacity-in 8s;
+}
+
+.main_img3 {
+  position: absolute;
+  bottom: 18.8%;
+  right: -3.7%;
+  animation: opacity-in 12s;
+}
+
+#notice {
+  height: 62px;
+}
+
+.notice_left {
+  height: 100%;
+  width: 50%;
+  background-color: #111111;
+}
+.notice_right {
+  height: 100%;
+  width: 50%;
+  background-color: #f6f5ef;
+}
+
+#item1 {
+  background-color: #1e3932;
+  color: white;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  height: 170px;
+  width: 100%;
+}
+
+#item1_container {
+  max-width: 1080px;
+  height: 170px;
+  margin: 0 auto;
+}
+
+.item1_img {
+  float: left;
+  width: 16.3%;
+  margin-left: 40px;
+  margin-right: 40px;
+  text-align: center;
+}
+
+.item1_img > img {
+  width: 176px;
+}
+
+.item1_content {
+  float: left;
+}
+
+.content_top {
+  margin-bottom: 22px;
+}
+
+.top_text {
+  font-size: 100%;
+  width: 793px;
+  height: 95px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgb(172, 172, 172);
+}
+
+.top_text > h2 {
+  margin-bottom: 12px;
+  margin-top: 0px;
+}
+
+#item2 {
+  height: 572px;
+  background-image: url("https://image.istarbucks.co.kr/upload/common/img/main/2022/2022_NewYear_bean_bg.png");
+  background-repeat: no-repeat;
+  background-position: 70% center;
+  background-size: cover;
+}
+
+.item2_inner {
+  width: 1080px;
+  height: 572px;
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+}
+
+.item2_img {
+  position: absolute;
+  top: 14%;
+  left: 13.5%;
+}
+
+.item2_text {
+  position: absolute;
+  top: 32%;
+  right: 8.4%;
+}
+
+#item3 {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  position: relative;
+  background: url("https://image.istarbucks.co.kr/upload/common/img/main/2022/reserve_2022_hawaii_kau_bg_v2.jpg")
+    no-repeat center top;
+  background-size: cover;
+}
+
+.item3_back {
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background-image: url("https://image.istarbucks.co.kr/upload/common/img/main/2021/reserve_2022_hawaii_kau_visual_v4.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: auto 100%; */
+  z-index: 1;
+}
+
+#leftimg {
+  background-image: url("https://image.istarbucks.co.kr/upload/common/img/main/2021/reserve_2022_hawaii_kau_left_obj_v2.png");
+  width: 509px;
+  height: 400px;
+  position: absolute;
+  left: 0px;
+  z-index: 888;
+}
+
+#rightimg {
+  background-image: url("https://image.istarbucks.co.kr/upload/common/img/main/2021/reserve_2022_hawaii_kau_right_obj_v2.png");
+  width: 509px;
+  height: 400px;
+  position: absolute;
+  right: 0px;
+  z-index: 888;
+}
+
+.item_title {
+  width: 1080px;
+  height: 152px;
+  margin: 0 auto;
+  padding-top: 94px;
+  z-index: 888;
+}
+
+#item4 {
+  background-image: url("https://www.starbucks.co.kr/common/img/main/fav_prod_bg_new.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: auto 100%;
+  /* width: 1680px; */
+  width: 100%;
+  height: 800px;
+  /* display: flex; */
+
+  /* center at cross axis */
+  /* align-items: center; */
+
+  /* space around at main axis */
+  /* justify-content: space-around; */
+}
+
+#item4 .wrap_inner {
+  width: 1280px;
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+}
+
+#item4 .intro-text {
+  /* width: 40%; */
+  color: white;
+}
+
+#item4 .title {
+  position: absolute;
+  top: 120px;
+  left: 200px;
+  animation: slide-in-title 1s ease-out;
+}
+
+#item4 .subtitle {
+  position: absolute;
+  top: 370px;
+  left: 92px;
+  animation: slide-in-subtitle 1s ease-out 2ms;
+}
+
+#item4 .intro-img {
+  position: absolute;
+  top: 100px;
+  right: -10px;
+}
+
+#item5 {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  position: relative;
+
+  background-image: url("https://image.istarbucks.co.kr/upload/common/img/main/2021/reserve_bg_pc.png");
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 100%;
+  background-color: white;
+
+  z-index: 6;
+}
+
+.item5_title {
+  margin: 0 auto;
+  padding-top: 135px;
+  padding-left: 55px;
+  width: 100%;
+  max-width: 1100px;
+  z-index: 6;
+}
+
+.item5_img {
+  position: absolute;
+  right: 50%;
+  margin-right: -483px;
+  animation: opacity-in 2s ease-in-out;
+}
+
+#item6 {
+  background-image: url("https://www.starbucks.co.kr/common/img/main/store_bg.jpg");
+  background-size: 100% auto;
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.item6_inner {
+  width: 1280px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  margin-left: -640px;
+}
+
+.item6_img1 {
+  background-image: url("https://www.starbucks.co.kr/common/img/main/store_exp_img01.png");
+  width: 228px;
+  height: 228px;
+  position: absolute;
+  left: 390px;
+  top: 149px;
+  z-index: 5;
+}
+
+.item6_img2 {
+  background-image: url("https://www.starbucks.co.kr/common/img/main/store_exp_img02.png");
+  width: 366px;
+  height: 312px;
+  position: absolute;
+  top: 0px;
+  left: 160px;
+  z-index: 4;
+}
+
+.item6_img3 {
+  background-image: url("https://www.starbucks.co.kr/common/img/main/store_exp_img03.png");
+  height: 142px;
+  width: 343px;
+  position: absolute;
+  top: -60px;
+  left: 520px;
+  z-index: 4;
+}
+
+.item6_img4 {
+  background-image: url("https://www.starbucks.co.kr/common/img/main/store_exp_img04.png");
+  height: 102px;
+  width: 230px;
+  position: absolute;
+  right: 30px;
+  top: 298px;
+}
+
+.item6_text1 {
+  background-image: url("https://www.starbucks.co.kr/common/img/main/store_txt01.png");
+  width: 385px;
+  height: 54px;
+  position: absolute;
+  top: 100px;
+  right: 149px;
+}
+
+.item6_text2 {
+  background-image: url("https://www.starbucks.co.kr/common/img/main/store_txt02.png");
+  width: 366px;
+  height: 61px;
+  position: absolute;
+  top: 168px;
+  right: 168px;
+}
+
+.item6_btn {
+  position: absolute;
+  right: 402px;
+  top: 258px;
+  width: 121px;
+  height: 34px;
+  border: 2px solid #222;
+  border-radius: 3px;
+}
+
+.item6_btn > a {
+  color: #222;
+  display: block;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  vertical-align: baseline;
+  line-height: 34px;
+}
+
+/* animation (intro-text) */
+@keyframes slide-in-title {
+  from {
+    position: absolute;
+    left: -700px;
+    opacity: 0;
+  }
+
+  to {
+    position: absolute;
+    left: 200px;
+    opacity: 1;
+  }
+}
+@keyframes slide-out-title {
+  from {
+    position: absolute;
+    left: 200px;
+    opacity: 1;
+  }
+
+  to {
+    position: absolute;
+    left: -700px;
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-subtitle {
+  from {
+    position: absolute;
+    left: -700px;
+    opacity: 0;
+  }
+
+  to {
+    position: absolute;
+    left: 92px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-subtitle {
+  from {
+    position: absolute;
+    left: 92px;
+    opacity: 1;
+  }
+
+  to {
+    position: absolute;
+    left: -700px;
+    opacity: 0;
+  }
+}
+
+@keyframes opacity-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-item6-text1 {
+  from {
+    position: absolute;
+    right: -500px;
+    opacity: 0;
+  }
+
+  to {
+    position: absolute;
+    right: 149px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-item6-text1 {
+  from {
+    position: absolute;
+    right: 149px;
+    opacity: 1;
+  }
+
+  to {
+    position: absolute;
+    right: -500px;
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-item6-text2 {
+  from {
+    position: absolute;
+    right: -500px;
+    opacity: 0;
+  }
+
+  to {
+    position: absolute;
+    right: 168px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-item6-text2 {
+  from {
+    position: absolute;
+    right: 168px;
+    opacity: 1;
+  }
+
+  to {
+    position: absolute;
+    right: -500px;
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-item6-btn {
+  from {
+    position: absolute;
+    right: -500px;
+    opacity: 0;
+  }
+
+  to {
+    position: absolute;
+    right: 402px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-item6-btn {
+  from {
+    position: absolute;
+    right: 402px;
+    opacity: 1;
+  }
+
+  to {
+    position: absolute;
+    right: -500px;
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-item2-img {
+  from {
+    position: absolute;
+    left: -13.5%;
+    opacity: 0;
+  }
+
+  to {
+    position: absolute;
+    left: 13.5%;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-item2-img {
+  from {
+    position: absolute;
+    left: 13.5%;
+    opacity: 1;
+  }
+
+  to {
+    position: absolute;
+    left: 13.5%;
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-item2-text {
+  from {
+    position: absolute;
+    right: -13.5%;
+    opacity: 0;
+  }
+
+  to {
+    position: absolute;
+    right: 8.4%;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-item2-text {
+  from {
+    position: absolute;
+    right: 8.4%;
+    opacity: 1;
+  }
+
+  to {
+    position: absolute;
+    right: -8.4%;
+    opacity: 0;
+  }
+}
